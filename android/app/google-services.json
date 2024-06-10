@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "96863670806",
+    "firebase_url": "https://control-logo-default-rtdb.firebaseio.com",
+    "project_id": "control-logo",
+    "storage_bucket": "control-logo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:96863670806:android:d7d5a2f02ed6086bc25b37",
+        "android_client_info": {
+          "package_name": "com.example.mentis"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBO-ggdBNeDTdI7cXRZuqRmrSIopITi-jY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
