@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../core/helper/spacing.dart';
-import '../../../../core/routing/routing.dart';
+import '../../../../core/navigator/named_navigator_impl.dart';
+import '../../../../core/navigator/named_navigator_routes.dart';
 import '../../../../core/theme/color.dart';
 import '../../../../core/theme/styles.dart';
 
@@ -20,7 +20,7 @@ class CustomLoginText extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            GoRouter.of(context).push(AppRouter.kSignUp);
+            NamedNavigatorImpl.pushNamed(Routes.kSignUp);
           },
           child: Text(
             "Sign up ",

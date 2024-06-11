@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:mentis/core/helper/spacing.dart';
 import 'package:mentis/core/theme/styles.dart';
 import 'package:mentis/core/widget/button.dart';
 import 'package:mentis/feature/feedback/widget/custom_image_feedback.dart';
 
-import '../../../core/routing/routing.dart';
+import '../../../core/navigator/named_navigator_impl.dart';
+import '../../../core/navigator/named_navigator_routes.dart';
 import '../../../res.dart';
 import '../widget/custom_text_field_feedback.dart';
 
@@ -45,7 +45,7 @@ class FeedBackPageScreen extends StatelessWidget {
             CustomButton(
                 text: "FeedBack",
                 onPressed: () {
-                  GoRouter.of(context).push(AppRouter.kSendFeedback);
+                  NamedNavigatorImpl.pushNamed(Routes.kSendFeedback);
                 },
                 horizontal: 130,
                 vertical: 15),

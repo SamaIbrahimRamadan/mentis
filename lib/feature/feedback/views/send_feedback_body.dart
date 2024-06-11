@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:go_router/go_router.dart';
 import 'package:mentis/core/widget/custom_text_field.dart';
 
 import '../../../core/helper/spacing.dart';
-import '../../../core/routing/routing.dart';
+import '../../../core/navigator/named_navigator_impl.dart';
 import '../../../core/theme/styles.dart';
 import '../../../core/widget/button.dart';
 import '../../../core/widget/logo_text.dart';
@@ -15,24 +14,26 @@ class SendFeedBackBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        title: CustomLogoText(
+          x: 0,
+          onPressed: () => NamedNavigatorImpl.pop(),
+          text: 'FeedBack',
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.only(left: 28.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            verticalSpace(50),
-            CustomLogoText(
-              x: 0,
-              onPressed: () {
-                GoRouter.of(context).push(AppRouter.kFeedback);
-              },
-              text: 'FeedBack',
-            ),
-            verticalSpace(70),
+            // verticalSpace(50),
+            // verticalSpace(70),
             Text(
-              "How was Your Experience? ",
-              style: Styles.title20
-                  .copyWith(color: Colors.black, fontWeight: FontWeight.normal),
+              'How was Your Experience? ',
+              style: Styles.title20.copyWith(color: Colors.black, fontWeight: FontWeight.normal),
             ),
             verticalSpace(10),
             RatingBar.builder(
@@ -47,20 +48,16 @@ class SendFeedBackBody extends StatelessWidget {
                 color: Colors.amber,
               ),
               onRatingUpdate: (rating) {
-                print(rating);
+                // PrintLog.e(rating);
               },
             ),
             verticalSpace(30),
             const CustomTextField(
-              hintText: "Suggest anyThing we Can Improve..",
+              hintText: 'Suggest anyThing we Can Improve..',
               x: 50,
             ),
             verticalSpace(15),
-            CustomButton(
-                text: "Send FeedBack",
-                onPressed: () {},
-                horizontal: 110,
-                vertical: 15),
+            CustomButton(text: 'Send FeedBack', onPressed: () {}, horizontal: 110, vertical: 15),
           ],
         ),
       ),

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:mentis/core/theme/color.dart';
 import 'package:mentis/core/widget/button.dart';
 import 'package:mentis/feature/home/widget/custom_home_image_text.dart';
 
-import '../../../core/routing/routing.dart';
+import '../../../core/navigator/named_navigator_impl.dart';
+import '../../../core/navigator/named_navigator_routes.dart';
 import '../../../core/theme/styles.dart';
 import '../../../res.dart';
 
@@ -37,7 +37,7 @@ class HomePageBody extends StatelessWidget {
                     child: CustomButton(
                       text: 'Doctor',
                       onPressed: () {
-                        GoRouter.of(context).push(AppRouter.kDoctorHome);
+                        NamedNavigatorImpl.pushNamed(Routes.kDoctorHome);
                       },
                       horizontal: 30,
                       vertical: 10,
@@ -54,25 +54,25 @@ class HomePageBody extends StatelessWidget {
                       children: [
                         Container(
                           margin: const EdgeInsets.only(top: 20, right: 400),
-                          child: const Text("More ", style: Styles.title20),
+                          child: const Text('More ', style: Styles.title20),
                         ),
                         CustomHomeWidget(
-                          text3: "Score",
-                          text2: "Vr Score",
-                          text: "Look At Score Vr",
+                          text3: 'Score',
+                          text2: 'Vr Score',
+                          text: 'Look At Score Vr',
                           image: Res.vr,
                           x: 40,
                           onTap: () {
-                            GoRouter.of(context).push(AppRouter.kVrScore);
+                            NamedNavigatorImpl.pushNamed(Routes.kVrScore);
                           },
                         ),
                         CustomHomeWidget(
-                          text3: "advice",
-                          text2: " Do You Want Some Advice ",
-                          text: "Take Some Advice",
+                          text3: 'advice',
+                          text2: ' Do You Want Some Advice ',
+                          text: 'Take Some Advice',
                           image: Res.advice,
                           onTap: () {
-                            GoRouter.of(context).push(AppRouter.kAdvice);
+                            NamedNavigatorImpl.pushNamed(Routes.kAdvice);
                           },
                         )
                       ],

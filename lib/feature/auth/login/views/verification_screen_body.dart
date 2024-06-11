@@ -1,14 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:mentis/core/helper/spacing.dart';
 import 'package:mentis/core/theme/styles.dart';
 import 'package:mentis/core/widget/custom_text_field.dart';
 import 'package:mentis/feature/auth/login/widgets/verification_text_image.dart';
 import 'package:mentis/feature/auth/main_page/widget/custom_text_rich.dart';
 
-import '../../../../core/routing/routing.dart';
+import '../../../../core/navigator/named_navigator_impl.dart';
+import '../../../../core/navigator/named_navigator_routes.dart';
 import '../../../../core/widget/button.dart';
 
 class VerificationScreenBody extends StatefulWidget {
@@ -77,14 +77,13 @@ class _VerificationScreenBodyState extends State<VerificationScreenBody> {
         CustomButton(
           text: "Submit",
           onPressed: () {
-            GoRouter.of(context).push(AppRouter.kResetPass);
+            NamedNavigatorImpl.pushNamed(Routes.kResetPass);
           },
           horizontal: 130,
           vertical: 10,
         ),
         verticalSpace(30),
-        const CustomRichText(
-            text: "I didn't receive the code!", text2: "resend")
+        const CustomRichText(text: "I didn't receive the code!", text2: "resend")
       ]),
     );
   }

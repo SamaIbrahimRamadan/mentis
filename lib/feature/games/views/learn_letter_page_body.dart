@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:mentis/core/theme/color.dart';
 
 import '../../../core/helper/spacing.dart';
-import '../../../core/routing/routing.dart';
+import '../../../core/navigator/named_navigator_impl.dart';
+import '../../../core/navigator/named_navigator_routes.dart';
 import '../../../core/theme/styles.dart';
 import '../../../res.dart';
 import '../model/letter_model.dart';
@@ -30,7 +30,7 @@ class _LearnLetterPageBodyState extends State<LearnLetterPageBody> {
               horizontalSpace(10),
               IconButton(
                   onPressed: () {
-                    GoRouter.of(context).push(AppRouter.kGame);
+                    NamedNavigatorImpl.pushNamed(Routes.kFeedback);
                   },
                   icon: const Icon(
                     Icons.arrow_back_ios,
@@ -77,7 +77,7 @@ class _LearnLetterPageBodyState extends State<LearnLetterPageBody> {
               backgroundColor: ColorManger.mainColor,
               onPressed: () {
                 if (isLast) {
-                  GoRouter.of(context).push(AppRouter.kMainPage);
+                  NamedNavigatorImpl.pushNamed(Routes.kMainPage);
                 } else {
                   control.nextPage(
                       duration: const Duration(milliseconds: 750),

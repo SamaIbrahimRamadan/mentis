@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../core/helper/spacing.dart';
-import '../../../../core/routing/routing.dart';
+import '../../../../core/navigator/named_navigator_impl.dart';
+import '../../../../core/navigator/named_navigator_routes.dart';
 import '../../../../core/theme/styles.dart';
 import '../../../../core/widget/custom_text_field.dart';
 
 class CustomLoginTextField extends StatefulWidget {
   final TextEditingController controller, controllerPass;
-  const CustomLoginTextField(
-      {super.key, required this.controller, required this.controllerPass});
+  const CustomLoginTextField({super.key, required this.controller, required this.controllerPass});
 
   @override
   State<CustomLoginTextField> createState() => _CustomLoginTextFieldState();
@@ -45,7 +44,7 @@ class _CustomLoginTextFieldState extends State<CustomLoginTextField> {
           margin: const EdgeInsets.only(left: 200),
           child: GestureDetector(
             onTap: () {
-              GoRouter.of(context).push(AppRouter.kRecoverPass);
+              NamedNavigatorImpl.pushNamed(Routes.kRecoverPass);
             },
             child: const Text(
               "Recover password",

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:mentis/core/helper/spacing.dart';
 import 'package:mentis/core/theme/color.dart';
 import 'package:mentis/core/theme/styles.dart';
 import 'package:mentis/feature/doctor/widgets/custom_search.dart';
 
-import '../../../../../core/routing/routing.dart';
+import '../../../../../core/navigator/named_navigator_impl.dart';
+import '../../../../../core/navigator/named_navigator_routes.dart';
 import '../widget/doctor_list_view.dart';
 
 class DoctorPageBody extends StatefulWidget {
@@ -27,7 +27,7 @@ class _DoctorPageBodyState extends State<DoctorPageBody> {
               horizontalSpace(30),
               IconButton(
                   onPressed: () {
-                    GoRouter.of(context).push(AppRouter.kHome);
+                    NamedNavigatorImpl.pushNamed(Routes.kHome);
                   },
                   icon: const Icon(
                     Icons.arrow_back_ios,

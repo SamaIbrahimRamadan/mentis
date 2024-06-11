@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:mentis/core/helper/spacing.dart';
 import 'package:mentis/core/widget/logo_text.dart';
 import 'package:mentis/feature/profile/widget/custom_edit_profile.dart';
 
-import '../../../core/routing/routing.dart';
+import '../../../core/navigator/named_navigator_impl.dart';
+import '../../../core/navigator/named_navigator_routes.dart';
 import '../../../core/widget/button.dart';
 import '../../../res.dart';
 import '../../feedback/widget/custom_text_field_feedback.dart';
@@ -22,7 +22,7 @@ class EditProfileBody extends StatelessWidget {
             CustomLogoText(
                 text: 'Edit Profile',
                 onPressed: () {
-                  GoRouter.of(context).push(AppRouter.kProfile);
+                  NamedNavigatorImpl.pushNamed(Routes.kProfile);
                 }),
             verticalSpace(30),
             Image.asset(
@@ -51,11 +51,7 @@ class EditProfileBody extends StatelessWidget {
               text: 'Change Password',
             ),
             verticalSpace(30),
-            CustomButton(
-                text: "Save Change",
-                onPressed: () {},
-                horizontal: 130,
-                vertical: 15),
+            CustomButton(text: "Save Change", onPressed: () {}, horizontal: 130, vertical: 15),
           ],
         ),
       ),

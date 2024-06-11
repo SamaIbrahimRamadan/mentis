@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../../core/helper/spacing.dart';
-import '../../../../../core/routing/routing.dart';
+import '../../../../../core/navigator/named_navigator_impl.dart';
+import '../../../../../core/navigator/named_navigator_routes.dart';
 import '../../../../../core/theme/color.dart';
 import '../../../../../core/theme/styles.dart';
 import '../../../../../core/widget/icon_button.dart';
@@ -17,7 +17,7 @@ class AppBarChatDoctor extends StatelessWidget {
         horizontalSpace(30),
         IconButton(
             onPressed: () {
-              GoRouter.of(context).push(AppRouter.kDoctorHome);
+              NamedNavigatorImpl.pushNamed(Routes.kDoctorHome);
             },
             icon: const Icon(
               Icons.arrow_back_ios,
@@ -31,7 +31,7 @@ class AppBarChatDoctor extends StatelessWidget {
         horizontalSpace(70),
         CustomIconButton(
           onTap: () {
-            GoRouter.of(context).push(AppRouter.kCallDoctor);
+            NamedNavigatorImpl.pushNamed(Routes.kCallDoctor);
           },
           icon: Icons.call,
           colorIcon: Colors.black,

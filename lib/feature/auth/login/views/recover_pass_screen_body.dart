@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:mentis/core/helper/spacing.dart';
 import 'package:mentis/core/theme/color.dart';
 import 'package:mentis/core/theme/styles.dart';
 
-import '../../../../core/routing/routing.dart';
+import '../../../../core/navigator/named_navigator_impl.dart';
+import '../../../../core/navigator/named_navigator_routes.dart';
 import '../../../../core/widget/button.dart';
 import '../../../../res.dart';
 
@@ -23,7 +23,7 @@ class RecoverPassBody extends StatelessWidget {
             IconButton(
               icon: const Icon(Icons.arrow_back),
               onPressed: () {
-                GoRouter.of(context).push(AppRouter.kLogin);
+                NamedNavigatorImpl.pushNamed(Routes.kLogin);
               },
             ),
             horizontalSpace(40),
@@ -45,8 +45,7 @@ class RecoverPassBody extends StatelessWidget {
           child: TextField(
             decoration: InputDecoration(
               hintText: "Email or Phone Number",
-              hintStyle:
-                  Styles.title14.copyWith(color: ColorManger.lighterGray),
+              hintStyle: Styles.title14.copyWith(color: ColorManger.lighterGray),
             ),
           ),
         ),
@@ -54,7 +53,7 @@ class RecoverPassBody extends StatelessWidget {
         CustomButton(
           text: "Continue",
           onPressed: () {
-            GoRouter.of(context).push(AppRouter.kVerification);
+            NamedNavigatorImpl.pushNamed(Routes.kVerification);
           },
           horizontal: 120,
           vertical: 10,

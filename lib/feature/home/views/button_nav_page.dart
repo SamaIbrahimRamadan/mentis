@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/api/di.dart';
 import '../../../core/theme/color.dart';
 import '../view-model/home_cubit.dart';
 
@@ -10,7 +11,7 @@ class ButtonNavPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeCubit(),
+      create: (context) => di<HomeCubit>(),
       child: BlocConsumer<HomeCubit, HomeState>(
         listener: (context, state) {},
         builder: (context, state) {
@@ -30,15 +31,11 @@ class ButtonNavPage extends StatelessWidget {
                     ),
                     label: 'home'),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.category_outlined, size: 30),
-                    label: 'feedback'),
+                    icon: Icon(Icons.category_outlined, size: 30), label: 'feedback'),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.sports_esports_rounded, size: 30),
-                    label: 'Games'),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.chat, size: 30), label: "tasks"),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.person, size: 30), label: 'profile'),
+                    icon: Icon(Icons.sports_esports_rounded, size: 30), label: 'Games'),
+                BottomNavigationBarItem(icon: Icon(Icons.chat, size: 30), label: "tasks"),
+                BottomNavigationBarItem(icon: Icon(Icons.person, size: 30), label: 'profile'),
               ],
             ),
           );

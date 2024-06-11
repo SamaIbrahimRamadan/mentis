@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:mentis/core/theme/color.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../../../../../core/helper/spacing.dart';
-import '../../../../../core/routing/routing.dart';
+import '../../../../../core/navigator/named_navigator_impl.dart';
+import '../../../../../core/navigator/named_navigator_routes.dart';
 import '../../../../../core/theme/styles.dart';
 import '../../../../../core/widget/button.dart';
 import '../models/time_model.dart';
@@ -52,7 +52,7 @@ class _BookTimePageBodyState extends State<BookTimePageBody> {
             children: [
               IconButton(
                   onPressed: () {
-                    GoRouter.of(context).push(AppRouter.kAppointment);
+                    NamedNavigatorImpl.pushNamed(Routes.kAppointment);
                   },
                   icon: const Icon(
                     Icons.arrow_back_ios,
@@ -61,7 +61,7 @@ class _BookTimePageBodyState extends State<BookTimePageBody> {
               horizontalSpace(50),
               const Center(
                 child: Text(
-                  "Select Date And Time",
+                  'Select Date And Time',
                   style: Styles.title20,
                 ),
               ),
@@ -85,7 +85,7 @@ class _BookTimePageBodyState extends State<BookTimePageBody> {
             focusedDay: _focusedDay,
           ),
           verticalSpace(30),
-          const TextItem(text: "Available Time ", x: 180),
+          const TextItem(text: 'Available Time ', x: 180),
           verticalSpace(30),
           SizedBox(
             height: 60,
@@ -97,9 +97,9 @@ class _BookTimePageBodyState extends State<BookTimePageBody> {
           ),
           verticalSpace(50),
           CustomButton(
-              text: "Set  Appointment",
+              text: 'Set  Appointment',
               onPressed: () {
-                GoRouter.of(context).push(AppRouter.kBookTime);
+                NamedNavigatorImpl.pushNamed(Routes.kBookTime);
               },
               horizontal: 90,
               vertical: 20)

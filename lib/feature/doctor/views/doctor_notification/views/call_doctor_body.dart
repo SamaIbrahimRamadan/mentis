@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:mentis/core/helper/spacing.dart';
 import 'package:mentis/core/widget/icon_button.dart';
 import 'package:mentis/feature/doctor/views/doctor_notification/widgets/list_view_item_circle_avatar.dart';
 
-import '../../../../../core/routing/routing.dart';
+import '../../../../../core/navigator/named_navigator_impl.dart';
+import '../../../../../core/navigator/named_navigator_routes.dart';
 import '../../../../../core/theme/styles.dart';
 import '../../../../../res.dart';
 
@@ -45,8 +45,7 @@ class CallDoctorBody extends StatelessWidget {
             top: 380,
             child: Text(
               "Ringing",
-              style: Styles.title18
-                  .copyWith(color: Colors.white, fontWeight: FontWeight.normal),
+              style: Styles.title18.copyWith(color: Colors.white, fontWeight: FontWeight.normal),
             ),
           ),
           Positioned(
@@ -66,7 +65,7 @@ class CallDoctorBody extends StatelessWidget {
                   horizontalSpace(10),
                   CustomIconButton(
                     onTap: () {
-                      GoRouter.of(context).push(AppRouter.kDoctorHome);
+                      NamedNavigatorImpl.pushNamed(Routes.kDoctorHome);
                     },
                     icon: Icons.call,
                     colorBackGround: Colors.red,

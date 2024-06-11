@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:mentis/core/theme/styles.dart';
 import 'package:mentis/core/widget/custom_list_tile.dart';
 import 'package:mentis/feature/profile/widget/custom_profile_widget.dart';
 import 'package:mentis/res.dart';
 
 import '../../../core/helper/spacing.dart';
-import '../../../core/routing/routing.dart';
+import '../../../core/navigator/named_navigator_impl.dart';
+import '../../../core/navigator/named_navigator_routes.dart';
 
 class ProfilePageBody extends StatelessWidget {
   const ProfilePageBody({super.key});
@@ -41,7 +41,7 @@ class ProfilePageBody extends StatelessWidget {
               icon: Icons.settings_outlined,
               icons2: Icons.arrow_forward_ios,
               onTap: () {
-                GoRouter.of(context).push(AppRouter.kEditProfile);
+                NamedNavigatorImpl.pushNamed(Routes.kEditProfile);
               },
             ),
             const CustomProfileWidget(

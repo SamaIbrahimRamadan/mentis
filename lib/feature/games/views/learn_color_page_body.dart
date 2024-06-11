@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:mentis/feature/games/widgets/coloring_widget.dart';
 
 import '../../../core/helper/spacing.dart';
-import '../../../core/routing/routing.dart';
+import '../../../core/navigator/named_navigator_impl.dart';
+import '../../../core/navigator/named_navigator_routes.dart';
 import '../../../core/theme/styles.dart';
 import '../../../res.dart';
 
@@ -27,7 +27,7 @@ class LearnColorPageBody extends StatelessWidget {
           children: [
             IconButton(
                 onPressed: () {
-                  GoRouter.of(context).push(AppRouter.kGame);
+                  NamedNavigatorImpl.pushNamed(Routes.kGame);
                 },
                 icon: const Icon(Icons.arrow_back_ios, color: Colors.white)),
             horizontalSpace(120),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:mentis/core/theme/color.dart';
 import 'package:mentis/feature/onBoarding/model/model.dart';
 
-import '../../../core/routing/routing.dart';
+import '../../../core/navigator/named_navigator_impl.dart';
+import '../../../core/navigator/named_navigator_routes.dart';
 import '../widget/boarding_widget.dart';
 
 class OnBoardingBody extends StatefulWidget {
@@ -47,14 +47,21 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
           backgroundColor: ColorManger.mainColor,
           onPressed: () {
             if (isLast) {
-              GoRouter.of(context).push(AppRouter.kMainPage);
+              NamedNavigatorImpl.pushNamed(Routes.kMainPage);
             } else {
               control.nextPage(
                   duration: const Duration(milliseconds: 750),
                   curve: Curves.fastLinearToSlowEaseIn);
             }
           },
-          child: const Icon(Icons.arrow_forward),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(50),
+            side: const BorderSide(color: ColorManger.mainColor),
+          ),
+          child: const Icon(
+            Icons.arrow_forward,
+            color: Colors.white,
+          ),
         ),
       )
     ]);

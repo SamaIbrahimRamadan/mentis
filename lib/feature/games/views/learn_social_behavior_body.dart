@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:mentis/core/widget/icon_button.dart';
 
 import '../../../core/helper/spacing.dart';
-import '../../../core/routing/routing.dart';
+import '../../../core/navigator/named_navigator_impl.dart';
+import '../../../core/navigator/named_navigator_routes.dart';
 import '../../../core/theme/color.dart';
 import '../../../core/theme/styles.dart';
 import '../../../res.dart';
@@ -23,7 +23,7 @@ class LearnSocialBehaviorPageBody extends StatelessWidget {
               horizontalSpace(10),
               IconButton(
                   onPressed: () {
-                    GoRouter.of(context).push(AppRouter.kGame);
+                    NamedNavigatorImpl.pushNamed(Routes.kFeedback);
                   },
                   icon: const Icon(
                     Icons.arrow_back_ios,

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:mentis/core/helper/spacing.dart';
 import 'package:mentis/core/theme/color.dart';
 import 'package:mentis/core/theme/styles.dart';
 import 'package:mentis/core/widget/button.dart';
 import 'package:mentis/feature/doctor/views/doctor_booking/widgets/list_view_item.dart';
 
-import '../../../../../core/routing/routing.dart';
+import '../../../../../core/navigator/named_navigator_impl.dart';
+import '../../../../../core/navigator/named_navigator_routes.dart';
 import '../../../../../res.dart';
 import '../widgets/custom_icon.dart';
 
@@ -31,9 +31,8 @@ class DoctorBookingBody extends StatelessWidget {
             Container(
               width: 120,
               height: 120,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: ColorManger.light),
+              decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(15), color: ColorManger.light),
               child: Image.asset(Res.doctorImage),
             ),
             Column(
@@ -49,13 +48,13 @@ class DoctorBookingBody extends StatelessWidget {
                     horizontalSpace(40),
                     CustomIcon(
                         onTap: () {
-                          GoRouter.of(context).push(AppRouter.kChatDoctor);
+                          NamedNavigatorImpl.pushNamed(Routes.kChatDoctor);
                         },
                         icon: Icons.chat_bubble_outline_rounded),
                     horizontalSpace(10),
                     CustomIcon(
                         onTap: () {
-                          GoRouter.of(context).push(AppRouter.kCallDoctor);
+                          NamedNavigatorImpl.pushNamed(Routes.kCallDoctor);
                         },
                         icon: Icons.call),
                     horizontalSpace(10),
@@ -66,8 +65,7 @@ class DoctorBookingBody extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     "Torem ipsum dolor sit amet,\n consectetur adipiscing elit.",
-                    style:
-                        Styles.title14.copyWith(fontWeight: FontWeight.normal),
+                    style: Styles.title14.copyWith(fontWeight: FontWeight.normal),
                   ),
                 ),
                 Row(
@@ -75,14 +73,12 @@ class DoctorBookingBody extends StatelessWidget {
                     horizontalSpace(10),
                     Text(
                       "Payment",
-                      style:
-                          Styles.title16.copyWith(fontWeight: FontWeight.w500),
+                      style: Styles.title16.copyWith(fontWeight: FontWeight.w500),
                     ),
                     horizontalSpace(100),
                     Text(
                       "\$ 120.00",
-                      style:
-                          Styles.title16.copyWith(fontWeight: FontWeight.w500),
+                      style: Styles.title16.copyWith(fontWeight: FontWeight.w500),
                     )
                   ],
                 )
@@ -135,7 +131,7 @@ class DoctorBookingBody extends StatelessWidget {
         CustomButton(
             text: "Book on Appointment",
             onPressed: () {
-              GoRouter.of(context).push(AppRouter.kBookTime);
+              NamedNavigatorImpl.pushNamed(Routes.kBookTime);
             },
             horizontal: 100,
             vertical: 20)

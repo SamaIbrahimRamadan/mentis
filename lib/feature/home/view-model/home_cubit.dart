@@ -5,10 +5,13 @@ import 'package:mentis/feature/home/views/home_page.dart';
 import 'package:mentis/feature/notes/views/note_page.dart';
 import 'package:mentis/feature/profile/views/profile_screen.dart';
 
+import '../../../core/api/repository.dart';
+
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit() : super(HomeInitial());
+  final Repository repo;
+  HomeCubit(this.repo) : super(HomeInitial());
   static HomeCubit get(context) => BlocProvider.of(context);
   int select = 0;
   void selectPage(int value) {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../core/helper/spacing.dart';
-import '../../../../core/routing/routing.dart';
+import '../../../../core/navigator/named_navigator_impl.dart';
+import '../../../../core/navigator/named_navigator_routes.dart';
 import '../../../../core/theme/styles.dart';
 import '../../../../core/widget/custom_list_tile.dart';
 import '../../../../res.dart';
@@ -41,7 +41,7 @@ class DoctorProfileBody extends StatelessWidget {
               icon: Icons.settings_outlined,
               icons2: Icons.arrow_forward_ios,
               onTap: () {
-                GoRouter.of(context).push(AppRouter.kEditProfile);
+                NamedNavigatorImpl.pushNamed(Routes.kEditProfile);
               },
             ),
             const CustomProfileWidget(

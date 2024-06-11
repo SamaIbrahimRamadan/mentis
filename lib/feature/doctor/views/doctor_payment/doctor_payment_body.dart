@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
-import 'package:go_router/go_router.dart';
 import 'package:mentis/core/theme/color.dart';
 
-import '../../../../core/routing/routing.dart';
+import '../../../../core/navigator/named_navigator_impl.dart';
+import '../../../../core/navigator/named_navigator_routes.dart';
 import '../../../../core/widget/button.dart';
 
 class MySamplePayment extends StatefulWidget {
@@ -62,22 +62,16 @@ class MySamplePaymentState extends State<MySamplePayment> {
                       cardHolderName: cardHolderName,
                       cvvCode: cvvCode,
                       bankName: 'Axis Bank',
-                      frontCardBorder: useGlassMorphism
-                          ? null
-                          : Border.all(color: Colors.grey),
-                      backCardBorder: useGlassMorphism
-                          ? null
-                          : Border.all(color: Colors.grey),
+                      frontCardBorder: useGlassMorphism ? null : Border.all(color: Colors.grey),
+                      backCardBorder: useGlassMorphism ? null : Border.all(color: Colors.grey),
                       showBackView: isCvvFocused,
                       obscureCardNumber: true,
                       obscureCardCvv: true,
                       isHolderNameVisible: true,
                       cardBgColor: Colors.black,
-                      backgroundImage:
-                          useBackgroundImage ? 'assets/card_bg.png' : null,
+                      backgroundImage: useBackgroundImage ? 'assets/card_bg.png' : null,
                       isSwipeGestureEnabled: true,
-                      onCreditCardWidgetChange:
-                          (CreditCardBrand creditCardBrand) {},
+                      onCreditCardWidgetChange: (CreditCardBrand creditCardBrand) {},
                       customCardTypeIcons: <CustomCardTypeIcon>[
                         CustomCardTypeIcon(
                           cardType: CardType.mastercard,
@@ -141,7 +135,7 @@ class MySamplePaymentState extends State<MySamplePayment> {
                         CustomButton(
                           text: 'Add to card',
                           onPressed: () {
-                            GoRouter.of(context).push(AppRouter.kPaymentDone);
+                            NamedNavigatorImpl.pushNamed(Routes.kPaymentDone);
                           },
                           horizontal: 140,
                           vertical: 15,

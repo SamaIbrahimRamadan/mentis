@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:mentis/feature/vr/widget/score_widget.dart';
 
 import '../../../core/helper/spacing.dart';
-import '../../../core/routing/routing.dart';
+import '../../../core/navigator/named_navigator_impl.dart';
+import '../../../core/navigator/named_navigator_routes.dart';
 import '../../../core/theme/color.dart';
 import '../../../core/theme/styles.dart';
 import '../../../res.dart';
@@ -22,7 +22,7 @@ class VrScoreBody extends StatelessWidget {
               horizontalSpace(10),
               IconButton(
                   onPressed: () {
-                    GoRouter.of(context).push(AppRouter.kHome);
+                    NamedNavigatorImpl.pushNamed(Routes.kHome);
                   },
                   icon: const Icon(
                     Icons.arrow_back_ios,
@@ -49,9 +49,8 @@ class VrScoreBody extends StatelessWidget {
           Container(
             width: 350,
             height: 90,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: ColorManger.darkGrey),
+            decoration:
+                BoxDecoration(borderRadius: BorderRadius.circular(20), color: ColorManger.darkGrey),
             child: Row(
               children: [
                 horizontalSpace(10),
@@ -61,7 +60,7 @@ class VrScoreBody extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(35),
                         border: Border.all(color: Colors.white, width: 3)),
-                    child: Center(
+                    child: const Center(
                         child: Icon(
                       Icons.lock_outline,
                       size: 30,

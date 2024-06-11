@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:mentis/core/theme/color.dart';
 
 import '../../../../core/helper/spacing.dart';
-import '../../../../core/routing/routing.dart';
+import '../../../../core/navigator/named_navigator_impl.dart';
+import '../../../../core/navigator/named_navigator_routes.dart';
 import '../../../../core/theme/styles.dart';
 import '../../../../core/widget/button.dart';
 import '../../../../core/widget/custom_text_field.dart';
@@ -25,12 +25,11 @@ class ResetPassScreenBody extends StatelessWidget {
               icon: const Icon(Icons.arrow_back_ios),
               color: ColorManger.mainColor,
               onPressed: () {
-                GoRouter.of(context).push(AppRouter.kVerification);
+                NamedNavigatorImpl.pushNamed(Routes.kVerification);
               },
             ),
             horizontalSpace(40),
-            Text("Recover Password",
-                style: Styles.title16.copyWith(color: ColorManger.mainColor)),
+            Text("Recover Password", style: Styles.title16.copyWith(color: ColorManger.mainColor)),
           ],
         ),
         Image.asset(Res.reset),
@@ -64,7 +63,7 @@ class ResetPassScreenBody extends StatelessWidget {
         CustomButton(
           text: "Recover",
           onPressed: () {
-            GoRouter.of(context).push(AppRouter.kVerification);
+            NamedNavigatorImpl.pushNamed(Routes.kVerification);
           },
           horizontal: 120,
           vertical: 10,

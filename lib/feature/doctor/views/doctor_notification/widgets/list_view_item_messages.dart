@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../../core/helper/spacing.dart';
-import '../../../../../core/routing/routing.dart';
+import '../../../../../core/navigator/named_navigator_impl.dart';
+import '../../../../../core/navigator/named_navigator_routes.dart';
 import '../../../../../core/theme/styles.dart';
 import 'list_view_item_circle_avatar.dart';
 
@@ -13,7 +13,7 @@ class ListViewItemMessages extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.kChatDoctor);
+        NamedNavigatorImpl.pushNamed(Routes.kChatDoctor);
       },
       child: Container(
         width: 340,
@@ -32,22 +32,21 @@ class ListViewItemMessages extends StatelessWidget {
                 children: [
                   Text(
                     "Dr.Sara",
-                    style: Styles.title18.copyWith(
-                        color: Colors.black, fontWeight: FontWeight.w500),
+                    style:
+                        Styles.title18.copyWith(color: Colors.black, fontWeight: FontWeight.w500),
                   ),
                   horizontalSpace(130),
                   Text(
                     "12:50",
-                    style: Styles.title14.copyWith(
-                        color: Colors.black, fontWeight: FontWeight.w500),
+                    style:
+                        Styles.title14.copyWith(color: Colors.black, fontWeight: FontWeight.w500),
                   ),
                 ],
               ),
               verticalSpace(10),
               Text(
                 "how are you ? what are you feel now ? ",
-                style: Styles.title14
-                    .copyWith(color: Colors.black, fontWeight: FontWeight.w500),
+                style: Styles.title14.copyWith(color: Colors.black, fontWeight: FontWeight.w500),
               ),
               verticalSpace(10),
             ]),

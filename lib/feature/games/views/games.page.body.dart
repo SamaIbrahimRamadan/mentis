@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:mentis/core/theme/styles.dart';
 import 'package:mentis/feature/games/widgets/home_game_widget.dart';
 
 import '../../../core/helper/spacing.dart';
-import '../../../core/routing/routing.dart';
+import '../../../core/navigator/named_navigator_impl.dart';
+import '../../../core/navigator/named_navigator_routes.dart';
 import '../../../res.dart';
 
 class GamesPageBody extends StatelessWidget {
@@ -46,7 +46,7 @@ class GamesPageBody extends StatelessWidget {
                   text: "Learn Color",
                   image: Res.learnColor,
                   onTap: () {
-                    GoRouter.of(context).push(AppRouter.kLearnColor);
+                    NamedNavigatorImpl.pushNamed(Routes.kLearnColor);
                   },
                 )),
             Positioned(
@@ -56,7 +56,7 @@ class GamesPageBody extends StatelessWidget {
                   text: "Learn Letter",
                   image: Res.learnLetter,
                   onTap: () {
-                    GoRouter.of(context).push(AppRouter.kLearnLetter);
+                    NamedNavigatorImpl.pushNamed(Routes.kLearnLetter);
                   },
                 )),
             Positioned(
@@ -66,7 +66,7 @@ class GamesPageBody extends StatelessWidget {
                   text: "Social behaviour ",
                   image: Res.puzzle,
                   onTap: () {
-                    GoRouter.of(context).push(AppRouter.kLearnSocialBehavior);
+                    NamedNavigatorImpl.pushNamed(Routes.kLearnSocialBehavior);
                   },
                 ))
           ],

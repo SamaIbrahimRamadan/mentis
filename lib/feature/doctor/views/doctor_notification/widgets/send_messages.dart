@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/helper/spacing.dart';
@@ -27,16 +25,14 @@ class _SendMessagesState extends State<SendMessages> {
     if (enterMessage.trim().isEmpty) {
       return;
     }
-    final User user = FirebaseAuth.instance.currentUser!; //بجيب اليوزر الحالي
-    final userData =
-        await FirebaseFirestore.instance.collection('user').doc(user.uid).get();
-
-    await FirebaseFirestore.instance.collection('chat').add({
-      'text': enterMessage,
-      'createdAt': Timestamp.now(),
-      'userId': user.uid,
-      'email': userData.data()!['email'],
-    });
+    // final User user = FirebaseAuth.instance.currentUser!; //بجيب اليوزر الحالي
+    // final userData = await FirebaseFirestore.instance.collection('user').doc(user.uid).get();
+    // await FirebaseFirestore.instance.collection('chat').add({
+    //   'text': enterMessage,
+    //   'createdAt': Timestamp.now(),
+    //   'userId': user.uid,
+    //   'email': userData.data()!['email'],
+    // });
     messagesController.clear();
   }
 
