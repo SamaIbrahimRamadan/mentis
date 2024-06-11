@@ -33,6 +33,8 @@ class _LoginScreenState extends State<LoginScreen> {
           listener: (context, state) {
             if (state is LoginSuccess) {
               NamedNavigatorImpl.pushNamed(Routes.kHome);
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(const SnackBar(content: Text('Login success')));
             }
             if (state is LoginFailure) {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.message)));
@@ -53,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ConditionalBtn(
                         condition: state is LoginLoading,
                         text: 'Login',
-                        onTap: () async {
+                        onPressed: () async {
                           if (key.currentState!.validate()) {
                             cubit.login(
                               email: controller.text,

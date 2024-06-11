@@ -13,12 +13,12 @@ class CustomEditProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        horizontalSpace(30),
+        30.sbW,
         Text(
           text,
           style: Styles.title16,
         ),
-        horizontalSpace(x ?? 200),
+        (x ?? 200).sbW,
         const Icon(
           Icons.arrow_forward_ios,
           size: 20,

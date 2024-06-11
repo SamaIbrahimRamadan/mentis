@@ -15,23 +15,22 @@ class NotePageBody extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            verticalSpace(50),
+            50.sbH,
             Row(
               children: [
-                horizontalSpace(40),
+                40.sbW,
                 const Text(
-                  "Notes",
+                  'Notes',
                   style: Styles.title24,
                 ),
-                horizontalSpace(170),
+                170.sbW,
                 CustomIconButton(onTap: () {}, icon: Icons.search),
-                horizontalSpace(30),
-                CustomIconButton(
-                    onTap: () {}, icon: Icons.settings_input_svideo_outlined),
+                30.sbW,
+                CustomIconButton(onTap: () {}, icon: Icons.settings_input_svideo_outlined),
               ],
             ),
             Image.asset(Res.note2),
-            const Text("Create Your First Note!", style: Styles.title20),
+            const Text('Create Your First Note!', style: Styles.title20),
           ],
         ),
       ),

@@ -15,14 +15,12 @@ class ListViewItem extends StatelessWidget {
       child: Container(
           width: 100,
           height: 50,
-          decoration: BoxDecoration(
-              color: ColorManger.light,
-              borderRadius: BorderRadius.circular(10)),
+          decoration:
+              BoxDecoration(color: ColorManger.light, borderRadius: BorderRadius.circular(10)),
           child: Center(
               child: Text(
             text,
-            style: Styles.title18
-                .copyWith(color: Colors.black, fontWeight: FontWeight.w500),
+            style: Styles.title18.copyWith(color: Colors.black, fontWeight: FontWeight.w500),
           ))),
     );
   }
@@ -37,10 +35,10 @@ class TextItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        horizontalSpace(10),
+        10.sbW,
         Text(text, style: Styles.title18.copyWith(color: Colors.black)),
-        horizontalSpace(x ?? 200),
-        Text("See All", style: Styles.title18.copyWith(color: Colors.black)),
+        (x ?? 200).sbW,
+        Text('See All', style: Styles.title18.copyWith(color: Colors.black)),
       ],
     );
   }

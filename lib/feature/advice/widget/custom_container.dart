@@ -24,9 +24,8 @@ class CustomContainer extends StatelessWidget {
             Res.clock,
             width: 30,
           ),
-          horizontalSpace(10),
-          Text(text,
-              style: Styles.title16.copyWith(fontWeight: FontWeight.normal))
+          10.sbW,
+          Text(text, style: Styles.title16.copyWith(fontWeight: FontWeight.normal))
         ],
       ),
     );

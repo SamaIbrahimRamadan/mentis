@@ -11,14 +11,14 @@ class CustomVerificationTextImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        verticalSpace(70),
-        const Text("Verification", style: Styles.title20),
+        70.sbH,
+        const Text('Verification', style: Styles.title20),
         Text(
-          "Enter the code from the sms\n we sent you",
+          'Enter the code from the sms\n we sent you',
           textAlign: TextAlign.center,
           style: Styles.title14.copyWith(fontWeight: FontWeight.normal),
         ),
-        verticalSpace(30),
+        30.sbH,
         Image.asset(Res.password),
       ],
     );

@@ -41,6 +41,7 @@ class DioImpl extends DioHelper {
       ..options.baseUrl = baseURL
       ..options.headers.addAll({
         'Accept': 'application/json',
+        'Content-Type': 'application/json',
       });
   }
 

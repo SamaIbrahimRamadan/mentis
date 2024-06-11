@@ -13,16 +13,16 @@ class MangeMoodSectionTwo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        verticalSpace(20),
+        20.sbH,
         Row(
           children: [
-            horizontalSpace(40),
+            40.sbW,
             CustomIconButton(
               width: 50,
               onTap: () {},
               icon: Icons.arrow_back_ios,
             ),
-            horizontalSpace(230),
+            230.sbW,
             CustomIconButton(
               onTap: () {},
               width: 50,

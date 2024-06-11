@@ -58,7 +58,7 @@ class _NewMessagesState extends State<NewMessages> {
     //     });
     return const Scaffold(
       body: Center(
-        child: Text("New Messages"),
+        child: Text('New Messages'),
       ),
     );
   }

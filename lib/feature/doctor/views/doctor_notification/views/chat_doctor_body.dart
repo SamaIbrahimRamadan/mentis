@@ -12,7 +12,7 @@ class DoctorChatBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Column(children: [
-      verticalSpace(40),
+      40.sbH,
       const AppBarChatDoctor(),
       const Expanded(child: NewMessages()),
       const SendMessages()

@@ -6,11 +6,7 @@ import '../../../core/theme/styles.dart';
 class HomeGameWidget extends StatelessWidget {
   final String text, image;
   final void Function() onTap;
-  const HomeGameWidget(
-      {super.key,
-      required this.text,
-      required this.image,
-      required this.onTap});
+  const HomeGameWidget({super.key, required this.text, required this.image, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +17,7 @@ class HomeGameWidget extends StatelessWidget {
           text,
           style: Styles.title16.copyWith(color: Colors.white),
         ),
-        verticalSpace(10),
+        10.sbH,
         InkWell(
           onTap: onTap,
           child: Container(

@@ -17,17 +17,17 @@ class DoctorBookingBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(children: [
-        verticalSpace(50),
+        50.sbH,
         const Center(
           child: Text(
-            "Appointment",
+            'Appointment',
             style: Styles.title20,
           ),
         ),
-        verticalSpace(30),
+        30.sbH,
         Row(
           children: [
-            horizontalSpace(10),
+            10.sbW,
             Container(
               width: 120,
               height: 120,
@@ -40,44 +40,44 @@ class DoctorBookingBody extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    horizontalSpace(10),
+                    10.sbW,
                     Text(
-                      "Dr.Sara",
+                      'Dr.Sara',
                       style: Styles.title24.copyWith(color: Colors.black),
                     ),
-                    horizontalSpace(40),
+                    40.sbW,
                     CustomIcon(
                         onTap: () {
                           NamedNavigatorImpl.pushNamed(Routes.kChatDoctor);
                         },
                         icon: Icons.chat_bubble_outline_rounded),
-                    horizontalSpace(10),
+                    10.sbW,
                     CustomIcon(
                         onTap: () {
                           NamedNavigatorImpl.pushNamed(Routes.kCallDoctor);
                         },
                         icon: Icons.call),
-                    horizontalSpace(10),
+                    10.sbW,
                     CustomIcon(onTap: () {}, icon: Icons.video_call_rounded)
                   ],
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    "Torem ipsum dolor sit amet,\n consectetur adipiscing elit.",
+                    'Torem ipsum dolor sit amet,\n consectetur adipiscing elit.',
                     style: Styles.title14.copyWith(fontWeight: FontWeight.normal),
                   ),
                 ),
                 Row(
                   children: [
-                    horizontalSpace(10),
+                    10.sbW,
                     Text(
-                      "Payment",
+                      'Payment',
                       style: Styles.title16.copyWith(fontWeight: FontWeight.w500),
                     ),
-                    horizontalSpace(100),
+                    100.sbW,
                     Text(
-                      "\$ 120.00",
+                      '\$ 120.00',
                       style: Styles.title16.copyWith(fontWeight: FontWeight.w500),
                     )
                   ],
@@ -89,21 +89,21 @@ class DoctorBookingBody extends StatelessWidget {
         Container(
           margin: const EdgeInsets.only(right: 300, top: 30),
           child: Text(
-            "Details",
+            'Details',
             style: Styles.title18.copyWith(color: Colors.black),
           ),
         ),
-        verticalSpace(20),
+        20.sbH,
         Padding(
           padding: const EdgeInsets.only(left: 20.0),
           child: Text(
-            "Worem ipsum dolor sit amet, consectetur adipiscing elit. \n Nunc vulputate libero et velit interdum, ac aliquet odio \n mattis.Class aptent taciti sociosqu ad litora torquent per conubia  nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Ut commodo efficitur neque. Ut diam quam, semper iaculis condimentum ac, vestibulum eu nisl.",
+            'Worem ipsum dolor sit amet, consectetur adipiscing elit. \n Nunc vulputate libero et velit interdum, ac aliquet odio \n mattis.Class aptent taciti sociosqu ad litora torquent per conubia  nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Ut commodo efficitur neque. Ut diam quam, semper iaculis condimentum ac, vestibulum eu nisl.',
             style: Styles.title14.copyWith(fontWeight: FontWeight.w500),
           ),
         ),
-        verticalSpace(20),
-        const TextItem(text: "Working hour"),
-        verticalSpace(20),
+        20.sbH,
+        const TextItem(text: 'Working hour'),
+        20.sbH,
         SizedBox(
           height: 60,
           child: ListView.separated(
@@ -111,25 +111,25 @@ class DoctorBookingBody extends StatelessWidget {
               itemBuilder: (ctx, index) => const ListViewItem(
                     text: '10.00 PM',
                   ),
-              separatorBuilder: (ctx, index) => horizontalSpace(20),
+              separatorBuilder: (ctx, index) => 20.sbW,
               itemCount: 10),
         ),
-        verticalSpace(20),
-        const TextItem(text: "Date", x: 270),
-        verticalSpace(20),
+        20.sbH,
+        const TextItem(text: 'Date', x: 270),
+        20.sbH,
         SizedBox(
           height: 60,
           child: ListView.separated(
               scrollDirection: Axis.horizontal,
               itemBuilder: (ctx, index) => const ListViewItem(
-                    text: "Sun 4",
+                    text: 'Sun 4',
                   ),
-              separatorBuilder: (ctx, index) => horizontalSpace(20),
+              separatorBuilder: (ctx, index) => 20.sbW,
               itemCount: 10),
         ),
-        verticalSpace(20),
+        20.sbH,
         CustomButton(
-            text: "Book on Appointment",
+            text: 'Book on Appointment',
             onPressed: () {
               NamedNavigatorImpl.pushNamed(Routes.kBookTime);
             },

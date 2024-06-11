@@ -28,7 +28,7 @@ class SplashCubit extends Cubit<SplashState> {
       bool isLogged = di<CacheHelper>().getBool(CachingKey.isLogged);
       if (isLogged == true) {
         String? token = UserPreferencesHelper().getUserTokenPreference();
-        log('Hello Sama :$token');
+        log('Hello Sama => $token');
         log('isLogged ==> $isLogged');
 
         emit(AuthenticatedState());

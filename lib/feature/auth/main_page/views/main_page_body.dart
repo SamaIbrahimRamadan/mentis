@@ -17,11 +17,11 @@ class MainPageScreenBody extends StatelessWidget {
     return Column(
       children: [
         Image.asset(Res.mobile),
-        // verticalSpace(40),
-        const Text("Welcome To ADHD", style: Styles.title20),
-        verticalSpace(40),
+        // 40.sbH,
+        const Text('Welcome To ADHD', style: Styles.title20),
+        40.sbH,
         CustomButton(
-          text: "create account",
+          text: 'create account',
           onPressed: () {
             NamedNavigatorImpl.pushNamed(Routes.kSignUp);
           },
@@ -30,17 +30,17 @@ class MainPageScreenBody extends StatelessWidget {
           color: Colors.white,
           color2: ColorManger.mainColor,
         ),
-        verticalSpace(40),
+        40.sbH,
         CustomButton(
-          text: "Login",
+          text: 'Login',
           onPressed: () {
             NamedNavigatorImpl.pushNamed(Routes.kLogin);
           },
           horizontal: 130,
           vertical: 15,
         ),
-        verticalSpace(40),
-        const CustomRichText(text: "I Didn't create an  account!", text2: "Skip"),
+        40.sbH,
+        const CustomRichText(text: "I Didn't create an  account!", text2: 'Skip'),
       ],
     );
   }

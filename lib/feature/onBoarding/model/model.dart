@@ -13,10 +13,10 @@ List<Model> modelList = [
       image: Res.surance),
   Model(
       text:
-          "Utilizing cutting-edge technological\n advancements and incorporating modern,\nstate-of-the-art technologies in the field of\n medical treatment and healthcare.",
+          'Utilizing cutting-edge technological\n advancements and incorporating modern,\nstate-of-the-art technologies in the field of\n medical treatment and healthcare.',
       image: Res.reality),
   Model(
       text:
-          "Constantly monitoring and meticulously\nkeeping a record of your treatment progress\nto ensure the best possible outcomes and\n adjustments as necessary",
+          'Constantly monitoring and meticulously\nkeeping a record of your treatment progress\nto ensure the best possible outcomes and\n adjustments as necessary',
       image: Res.watch)
 ];

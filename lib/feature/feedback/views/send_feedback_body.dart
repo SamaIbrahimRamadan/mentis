@@ -29,13 +29,13 @@ class SendFeedBackBody extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // verticalSpace(50),
-            // verticalSpace(70),
+            //  50.sbH,
+            //  70.sbH,
             Text(
               'How was Your Experience? ',
               style: Styles.title20.copyWith(color: Colors.black, fontWeight: FontWeight.normal),
             ),
-            verticalSpace(10),
+            10.sbH,
             RatingBar.builder(
               initialRating: 3,
               minRating: 1,
@@ -51,12 +51,12 @@ class SendFeedBackBody extends StatelessWidget {
                 // PrintLog.e(rating);
               },
             ),
-            verticalSpace(30),
+            30.sbH,
             const CustomTextField(
               hintText: 'Suggest anyThing we Can Improve..',
               x: 50,
             ),
-            verticalSpace(15),
+            15.sbH,
             CustomButton(text: 'Send FeedBack', onPressed: () {}, horizontal: 110, vertical: 15),
           ],
         ),

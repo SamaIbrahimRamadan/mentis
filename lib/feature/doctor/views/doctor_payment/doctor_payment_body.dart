@@ -5,6 +5,7 @@ import 'package:mentis/core/theme/color.dart';
 import '../../../../core/navigator/named_navigator_impl.dart';
 import '../../../../core/navigator/named_navigator_routes.dart';
 import '../../../../core/widget/button.dart';
+import '../../../../res.dart';
 
 class MySamplePayment extends StatefulWidget {
   const MySamplePayment({super.key});
@@ -69,14 +70,14 @@ class MySamplePaymentState extends State<MySamplePayment> {
                       obscureCardCvv: true,
                       isHolderNameVisible: true,
                       cardBgColor: Colors.black,
-                      backgroundImage: useBackgroundImage ? 'assets/card_bg.png' : null,
+                      backgroundImage: useBackgroundImage ? Res.cardBg : null,
                       isSwipeGestureEnabled: true,
                       onCreditCardWidgetChange: (CreditCardBrand creditCardBrand) {},
                       customCardTypeIcons: <CustomCardTypeIcon>[
                         CustomCardTypeIcon(
                           cardType: CardType.mastercard,
                           cardImage: Image.asset(
-                            'assets/mastercard.png',
+                            Res.mastercard,
                             height: 48,
                             width: 48,
                           ),

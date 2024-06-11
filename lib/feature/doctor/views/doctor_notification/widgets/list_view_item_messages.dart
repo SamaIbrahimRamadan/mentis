@@ -23,32 +23,32 @@ class ListViewItemMessages extends StatelessWidget {
             borderRadius: BorderRadius.circular(10)),
         child: Row(
           children: [
-            horizontalSpace(10),
+            10.sbW,
             const CustomCircleAvatar(),
-            horizontalSpace(10),
+            10.sbW,
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              verticalSpace(20),
+              20.sbH,
               Row(
                 children: [
                   Text(
-                    "Dr.Sara",
+                    'Dr.Sara',
                     style:
                         Styles.title18.copyWith(color: Colors.black, fontWeight: FontWeight.w500),
                   ),
-                  horizontalSpace(130),
+                  130.sbW,
                   Text(
-                    "12:50",
+                    '12:50',
                     style:
                         Styles.title14.copyWith(color: Colors.black, fontWeight: FontWeight.w500),
                   ),
                 ],
               ),
-              verticalSpace(10),
+              10.sbH,
               Text(
-                "how are you ? what are you feel now ? ",
+                'how are you ? what are you feel now ? ',
                 style: Styles.title14.copyWith(color: Colors.black, fontWeight: FontWeight.w500),
               ),
-              verticalSpace(10),
+              10.sbH,
             ]),
           ],
         ),

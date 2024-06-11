@@ -18,40 +18,40 @@ class EditProfileBody extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            verticalSpace(30),
+            30.sbH,
             CustomLogoText(
                 text: 'Edit Profile',
                 onPressed: () {
                   NamedNavigatorImpl.pushNamed(Routes.kProfile);
                 }),
-            verticalSpace(30),
+            30.sbH,
             Image.asset(
               Res.profile2,
               width: 120,
             ),
-            verticalSpace(50),
-            const CustomEditProfile(text: "Email address"),
+            50.sbH,
+            const CustomEditProfile(text: 'Email address'),
             const CustomTexFieldFeedback(
               text: 'sama11@gmail.com',
             ),
-            verticalSpace(30),
+            30.sbH,
             const CustomEditProfile(
-              text: "Phone Numbers",
+              text: 'Phone Numbers',
               x: 190,
             ),
             const CustomTexFieldFeedback(
               text: '+20 109 148 4981',
             ),
-            verticalSpace(30),
+            30.sbH,
             const CustomEditProfile(
-              text: "Password",
+              text: 'Password',
               x: 230,
             ),
             const CustomTexFieldFeedback(
               text: 'Change Password',
             ),
-            verticalSpace(30),
-            CustomButton(text: "Save Change", onPressed: () {}, horizontal: 130, vertical: 15),
+            30.sbH,
+            CustomButton(text: 'Save Change', onPressed: () {}, horizontal: 130, vertical: 15),
           ],
         ),
       ),

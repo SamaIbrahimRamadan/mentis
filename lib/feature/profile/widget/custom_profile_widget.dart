@@ -10,22 +10,18 @@ class CustomProfileWidget extends StatelessWidget {
   final IconData? icons2;
   final void Function()? onTap;
   const CustomProfileWidget(
-      {super.key,
-      required this.text,
-      required this.icon,
-      this.icons2,
-      this.onTap});
+      {super.key, required this.text, required this.icon, this.icons2, this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        verticalSpace(30),
+        30.sbH,
         Row(
           children: [
-            horizontalSpace(30),
+            30.sbW,
             Icon(icon),
-            horizontalSpace(30),
+            30.sbW,
             InkWell(
               onTap: onTap,
               child: Text(
@@ -33,14 +29,11 @@ class CustomProfileWidget extends StatelessWidget {
                 style: Styles.title16.copyWith(fontWeight: FontWeight.w500),
               ),
             ),
-            horizontalSpace(140),
-            Icon(
-              icons2,
-              size: 20,
-            )
+            140.sbW,
+            Icon(icons2, size: 20)
           ],
         ),
-        verticalSpace(20),
+        20.sbH,
         const CustomDivider(),
       ],
     );

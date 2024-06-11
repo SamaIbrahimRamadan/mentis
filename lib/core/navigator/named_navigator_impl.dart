@@ -128,8 +128,6 @@ class NamedNavigatorImpl {
       case Routes.kAdvice:
         return MaterialPageRoute(builder: (_) => const AdvicePage());
 
-      case Routes.kHome:
-        return MaterialPageRoute(builder: (_) => const ButtonNavPage());
 
       case Routes.kEditProfile:
         return MaterialPageRoute(builder: (_) => const EditProfile());
@@ -155,14 +153,10 @@ class NamedNavigatorImpl {
       case Routes.kTakeAdvice:
         return MaterialPageRoute(builder: (_) => const TakeAdvice());
 
-      case Routes.kLogin:
-        return MaterialPageRoute(builder: (_) => const LoginScreen());
 
       case Routes.kSignUp:
         return MaterialPageRoute(builder: (_) => const SignUpScreen());
 
-      case Routes.kPaymentDone:
-        return MaterialPageRoute(builder: (_) => const GamesScreen());
 
       ///
     }

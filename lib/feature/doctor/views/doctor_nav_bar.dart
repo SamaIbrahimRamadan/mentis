@@ -36,7 +36,7 @@ class DoctorButtonNavPage extends StatelessWidget {
                 BottomNavigationBarItem(
                     icon: Icon(Icons.access_time, size: 30), label: 'Booking'),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.chat_outlined, size: 30), label: "chats"),
+                    icon: Icon(Icons.chat_outlined, size: 30), label: 'chats'),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.person, size: 30), label: 'profile'),
               ],

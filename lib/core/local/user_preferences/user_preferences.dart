@@ -1,4 +1,4 @@
-import '../../../feature/auth/login/login_cubit.dart';
+import '../../models/login_response.dart';
 
 abstract class IUserPreferences {
   void saveUserPreference({required LoginResponse userData});

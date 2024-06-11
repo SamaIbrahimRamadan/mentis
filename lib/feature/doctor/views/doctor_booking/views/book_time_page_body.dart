@@ -47,7 +47,7 @@ class _BookTimePageBodyState extends State<BookTimePageBody> {
     return Scaffold(
       body: Column(
         children: [
-          verticalSpace(50),
+          50.sbH,
           Row(
             children: [
               IconButton(
@@ -58,7 +58,7 @@ class _BookTimePageBodyState extends State<BookTimePageBody> {
                     Icons.arrow_back_ios,
                     color: ColorManger.mainColor,
                   )),
-              horizontalSpace(50),
+              50.sbW,
               const Center(
                 child: Text(
                   'Select Date And Time',
@@ -84,18 +84,18 @@ class _BookTimePageBodyState extends State<BookTimePageBody> {
             calendarStyle: const CalendarStyle(outsideDaysVisible: false),
             focusedDay: _focusedDay,
           ),
-          verticalSpace(30),
+          30.sbH,
           const TextItem(text: 'Available Time ', x: 180),
-          verticalSpace(30),
+          30.sbH,
           SizedBox(
             height: 60,
             child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (__, _) => const ListViewItem(text: '10.00 PM'),
-                separatorBuilder: (ctx, index) => horizontalSpace(20),
+                separatorBuilder: (ctx, index) => 20.sbW,
                 itemCount: 10),
           ),
-          verticalSpace(50),
+          50.sbH,
           CustomButton(
               text: 'Set  Appointment',
               onPressed: () {

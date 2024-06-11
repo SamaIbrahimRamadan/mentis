@@ -12,13 +12,13 @@ class LetterWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        verticalSpace(60),
+        60.sbH,
         Image.asset(
           model.image,
           width: 350,
           height: 400,
         ),
-        verticalSpace(35),
+        35.sbH,
         /* Text(
           model.text,
           textAlign: TextAlign.center,

@@ -4,9 +4,24 @@ import '../../../../core/helper/spacing.dart';
 import '../../../../core/widget/custom_text_field.dart';
 
 class CustomSignUpTextField extends StatefulWidget {
-  final TextEditingController controller, controllerPass;
-  const CustomSignUpTextField(
-      {super.key, required this.controller, required this.controllerPass});
+  final TextEditingController firstName;
+  final TextEditingController lastName;
+  final TextEditingController password;
+  final TextEditingController confirmPassword;
+  final TextEditingController email;
+  final TextEditingController idNumber;
+  final TextEditingController phone;
+
+  const CustomSignUpTextField({
+    super.key,
+    required this.firstName,
+    required this.lastName,
+    required this.password,
+    required this.confirmPassword,
+    required this.email,
+    required this.idNumber,
+    required this.phone,
+  });
 
   @override
   State<CustomSignUpTextField> createState() => _CustomSignUpTextFieldState();
@@ -22,32 +37,47 @@ class _CustomSignUpTextFieldState extends State<CustomSignUpTextField> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const SizedBox(
-                width: 150,
-                child: CustomTextField(
-                  hintText: "Name",
-                  type: TextInputType.name,
-                )),
-            horizontalSpace(15),
-            const SizedBox(
-                width: 160,
-                child:
-                    CustomTextField(hintText: "last", type: TextInputType.name))
+            SizedBox(
+              width: 150,
+              child: CustomTextField(
+                hintText: 'Name',
+                type: TextInputType.name,
+                controller: widget.firstName,
+              ),
+            ),
+            15.sbW,
+            SizedBox(
+              width: 160,
+              child: CustomTextField(
+                hintText: 'last',
+                type: TextInputType.name,
+                controller: widget.lastName,
+              ),
+            )
           ],
         ),
-        verticalSpace(15),
+        15.sbH,
         CustomTextField(
-          hintText: "email",
-          type: TextInputType.emailAddress,
-          controller: widget.controller,
+          hintText: 'Phone',
+          type: TextInputType.phone,
+          controller: widget.phone,
         ),
-        verticalSpace(15),
-        const CustomTextField(
-            hintText: "Id number", type: TextInputType.number),
-        verticalSpace(15),
+        15.sbH,
         CustomTextField(
-          hintText: "Password",
-          controller: widget.controllerPass,
+          hintText: 'Id number',
+          type: TextInputType.number,
+          controller: widget.idNumber,
+        ),
+        15.sbH,
+        CustomTextField(
+          hintText: 'email',
+          type: TextInputType.emailAddress,
+          controller: widget.email,
+        ),
+        15.sbH,
+        CustomTextField(
+          hintText: 'Password',
+          controller: widget.password,
           type: TextInputType.visiblePassword,
           icon2: Icons.visibility_off,
           onPressed: () {
@@ -57,10 +87,11 @@ class _CustomSignUpTextFieldState extends State<CustomSignUpTextField> {
           },
           isObscure: isObscure,
         ),
-        verticalSpace(15),
+        15.sbH,
         CustomTextField(
-          hintText: "Confirm Password",
+          hintText: 'Confirm Password',
           icon2: Icons.visibility_off,
+          controller: widget.confirmPassword,
           onPressed: () {
             setState(() {
               isObscure2 = !isObscure2;

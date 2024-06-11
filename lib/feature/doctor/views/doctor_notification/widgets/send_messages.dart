@@ -50,10 +50,10 @@ class _SendMessagesState extends State<SendMessages> {
             height: 60,
           ),
         ),
-        verticalSpace(10),
+        10.sbH,
         Row(
           children: [
-            horizontalSpace(20),
+            20.sbW,
             CustomTextFieldSearch(
               width: 290,
               hintText: 'Write here',
@@ -61,7 +61,7 @@ class _SendMessagesState extends State<SendMessages> {
               controller: messagesController,
               icons3: Icons.camera_alt,
             ),
-            horizontalSpace(10),
+            10.sbW,
             CustomIconButton(
               onTap: _sendMessages,
               icon: Icons.send,
@@ -71,7 +71,7 @@ class _SendMessagesState extends State<SendMessages> {
             )
           ],
         ),
-        verticalSpace(60)
+        60.sbH
       ],
     );
   }

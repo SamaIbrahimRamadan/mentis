@@ -36,7 +36,7 @@ class CallDoctorBody extends StatelessWidget {
             left: 155,
             top: 330,
             child: Text(
-              "Dr.Sara",
+              'Dr.Sara',
               style: Styles.title30.copyWith(color: Colors.black),
             ),
           ),
@@ -44,7 +44,7 @@ class CallDoctorBody extends StatelessWidget {
             left: 175,
             top: 380,
             child: Text(
-              "Ringing",
+              'Ringing',
               style: Styles.title18.copyWith(color: Colors.white, fontWeight: FontWeight.normal),
             ),
           ),
@@ -62,7 +62,7 @@ class CallDoctorBody extends StatelessWidget {
                     x: 20,
                     height: 40,
                   ),
-                  horizontalSpace(10),
+                  10.sbW,
                   CustomIconButton(
                     onTap: () {
                       NamedNavigatorImpl.pushNamed(Routes.kDoctorHome);
@@ -73,7 +73,7 @@ class CallDoctorBody extends StatelessWidget {
                     x: 20,
                     height: 40,
                   ),
-                  horizontalSpace(10),
+                  10.sbW,
                   CustomIconButton(
                     onTap: () {},
                     icon: Icons.mic_none,

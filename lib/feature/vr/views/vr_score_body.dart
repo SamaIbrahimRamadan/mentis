@@ -16,10 +16,10 @@ class VrScoreBody extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          verticalSpace(30),
+          30.sbH,
           Row(
             children: [
-              horizontalSpace(10),
+              10.sbW,
               IconButton(
                   onPressed: () {
                     NamedNavigatorImpl.pushNamed(Routes.kHome);
@@ -28,12 +28,12 @@ class VrScoreBody extends StatelessWidget {
                     Icons.arrow_back_ios,
                     color: ColorManger.mainColor,
                   )),
-              horizontalSpace(65),
+              65.sbW,
               Text(
-                "virtual activities",
+                'virtual activities',
                 style: Styles.title20.copyWith(),
               ),
-              horizontalSpace(45),
+              45.sbW,
               Image.asset(
                 Res.img,
                 width: 60,
@@ -41,11 +41,11 @@ class VrScoreBody extends StatelessWidget {
               ),
             ],
           ),
-          verticalSpace(40),
-          const ScoreWidget(number: '0', text: "Score:80%"),
-          verticalSpace(30),
-          const ScoreWidget(number: '1', text: "Score:50%"),
-          verticalSpace(30),
+          40.sbH,
+          const ScoreWidget(number: '0', text: 'Score:80%'),
+          30.sbH,
+          const ScoreWidget(number: '1', text: 'Score:50%'),
+          30.sbH,
           Container(
             width: 350,
             height: 90,
@@ -53,7 +53,7 @@ class VrScoreBody extends StatelessWidget {
                 BoxDecoration(borderRadius: BorderRadius.circular(20), color: ColorManger.darkGrey),
             child: Row(
               children: [
-                horizontalSpace(10),
+                10.sbW,
                 Container(
                     width: 70,
                     height: 70,
@@ -66,9 +66,9 @@ class VrScoreBody extends StatelessWidget {
                       size: 30,
                       color: Colors.white,
                     ))),
-                horizontalSpace(10),
+                10.sbW,
                 Text(
-                  "poss level 0&1 above to unlock",
+                  'poss level 0&1 above to unlock',
                   style: Styles.title16.copyWith(color: Colors.white),
                 )
               ],

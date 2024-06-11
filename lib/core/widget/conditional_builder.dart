@@ -29,14 +29,14 @@ class ConditionalBuilder extends StatelessWidget implements PreferredSizeWidget 
 
 class ConditionalBtn extends StatelessWidget implements PreferredSizeWidget {
   final bool condition;
-  final VoidCallback onTap;
+  final VoidCallback onPressed;
   final String text;
   final Widget? icon;
 
   const ConditionalBtn({
     super.key,
     required this.condition,
-    required this.onTap,
+    required this.onPressed,
     required this.text,
     this.icon,
   });
@@ -47,7 +47,7 @@ class ConditionalBtn extends StatelessWidget implements PreferredSizeWidget {
         ? const Center(child: CircularProgressIndicator())
         : CustomButton(
             text: text,
-            onPressed: onTap,
+            onPressed: onPressed,
             horizontal: 140,
             vertical: 13,
           );

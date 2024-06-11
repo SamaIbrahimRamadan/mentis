@@ -14,7 +14,7 @@ class AppBarChatDoctor extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        horizontalSpace(30),
+        30.sbW,
         IconButton(
             onPressed: () {
               NamedNavigatorImpl.pushNamed(Routes.kDoctorHome);
@@ -23,12 +23,12 @@ class AppBarChatDoctor extends StatelessWidget {
               Icons.arrow_back_ios,
               color: ColorManger.mainColor,
             )),
-        horizontalSpace(80),
+        80.sbW,
         const Text(
-          "Dr.Sara",
+          'Dr.Sara',
           style: Styles.title18,
         ),
-        horizontalSpace(70),
+        70.sbW,
         CustomIconButton(
           onTap: () {
             NamedNavigatorImpl.pushNamed(Routes.kCallDoctor);
@@ -38,7 +38,7 @@ class AppBarChatDoctor extends StatelessWidget {
           colorBackGround: ColorManger.light,
           x: 15,
         ),
-        horizontalSpace(10),
+        10.sbW,
         CustomIconButton(
           onTap: () {},
           colorIcon: Colors.black,

@@ -23,24 +23,24 @@ class ButtonNavPage extends StatelessWidget {
               unselectedItemColor: Colors.black,
               selectedItemColor: ColorManger.mainColor,
               backgroundColor: Colors.white,
-              items: const [
-                BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.home,
-                      size: 30,
-                    ),
-                    label: 'home'),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.category_outlined, size: 30), label: 'feedback'),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.sports_esports_rounded, size: 30), label: 'Games'),
-                BottomNavigationBarItem(icon: Icon(Icons.chat, size: 30), label: "tasks"),
-                BottomNavigationBarItem(icon: Icon(Icons.person, size: 30), label: 'profile'),
+              items: [
+                btnNavItem(Icons.home, 'home'),
+                btnNavItem(Icons.category_outlined, 'feedback'),
+                btnNavItem(Icons.sports_esports_rounded, 'Games'),
+                btnNavItem(Icons.chat, 'tasks'),
+                btnNavItem(Icons.person, 'profile'),
               ],
             ),
           );
         },
       ),
+    );
+  }
+
+  BottomNavigationBarItem btnNavItem(IconData icon, String label) {
+    return BottomNavigationBarItem(
+      icon: Icon(icon, size: 30),
+      label: label,
     );
   }
 }

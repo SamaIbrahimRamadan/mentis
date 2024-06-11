@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/helper/spacing.dart';
+import '../../../../../core/models/get_doctor_model.dart';
 import '../../../../../core/theme/color.dart';
 import '../../../../../core/theme/styles.dart';
 import '../../../../../core/widget/button.dart';
 import '../../../../../res.dart';
 
 class DoctorListView extends StatefulWidget {
-  const DoctorListView({Key? key}) : super(key: key);
+  final GetDoctorResponse model;
+  final int index;
+  const DoctorListView({super.key, required this.model, required this.index});
 
   @override
   State<DoctorListView> createState() => _DoctorListViewState();
@@ -15,76 +18,88 @@ class DoctorListView extends StatefulWidget {
 
 class _DoctorListViewState extends State<DoctorListView> {
   bool x = true;
+
+  @override
+  void initState() {
+    x = widget.model.data[widget.index].fav;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final model = widget.model.data[widget.index];
     return Container(
       width: 290,
       height: 170,
-      decoration: BoxDecoration(
-          color: ColorManger.light, borderRadius: BorderRadius.circular(10)),
+      decoration: BoxDecoration(color: ColorManger.light, borderRadius: BorderRadius.circular(10)),
       child: Row(
         children: [
-          horizontalSpace(8),
-          Image.asset(Res.doctorImage),
-          //horizontalSpace(8),
-          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            verticalSpace(5),
-            Row(
-              children: [
-                Text(
-                  "Dr.Sara",
-                  style: Styles.title18.copyWith(
-                      color: Colors.black, fontWeight: FontWeight.w500),
+          8.sbW,
+          Image.asset(Res.doctorImage, height: 150),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Text(
+                    model.name,
+                    style:
+                        Styles.title18.copyWith(color: Colors.black, fontWeight: FontWeight.w500),
+                  ),
+                  70.sbW,
+                  IconButton(
+                      onPressed: () {
+                        setState(() {
+                          if (x == false) {
+                            x = true;
+                          } else {
+                            x = false;
+                          }
+                        });
+                      },
+                      icon: x
+                          ? const Icon(
+                              Icons.favorite_border,
+                              color: ColorManger.mainColor,
+                            )
+                          : const Icon(
+                              Icons.favorite,
+                              color: ColorManger.mainColor,
+                            )),
+                ],
+              ),
+              Container(
+                constraints: const BoxConstraints(maxWidth: 200),
+                child: Text(
+                  model.desc,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                  style: Styles.title14.copyWith(color: Colors.black, fontWeight: FontWeight.w500),
                 ),
-                horizontalSpace(70),
-                IconButton(
-                    onPressed: () {
-                      setState(() {
-                        if (x == false) {
-                          x = true;
-                        } else {
-                          x = false;
-                        }
-                      });
-                    },
-                    icon: x
-                        ? const Icon(
-                            Icons.favorite_border,
-                            color: ColorManger.mainColor,
-                          )
-                        : const Icon(
-                            Icons.favorite,
-                            color: ColorManger.mainColor,
-                          )),
-              ],
-            ),
-            Text(
-              "Jorem ipsum dolor, consectetur \n adipiscing elit. Nunc v libero et \n velit  interdum, ac  mattes.",
-              style: Styles.title14
-                  .copyWith(color: Colors.black, fontWeight: FontWeight.w500),
-            ),
-            verticalSpace(10),
-            Row(
-              children: [
-                horizontalSpace(5),
-                CustomButton(
-                  text: 'Book',
-                  onPressed: () {},
-                  horizontal: 20,
-                  vertical: 5,
-                ),
-                horizontalSpace(40),
-                const Icon(
-                  Icons.star,
-                  color: ColorManger.yellow,
-                ),
-                const Text(
-                  "5.0",
-                  style: Styles.title16,
-                ),
-              ],
-            )
-          ]),
+              ),
+              10.sbH,
+              Row(
+                children: [
+                  5.sbW,
+                  CustomButton(
+                    text: 'Book',
+                    onPressed: () {},
+                    horizontal: 20,
+                    vertical: 5,
+                  ),
+                  40.sbW,
+                  const Icon(
+                    Icons.star,
+                    color: ColorManger.yellow,
+                  ),
+                  Text(
+                    model.rate.toString(),
+                    style: Styles.title16,
+                  ),
+                ],
+              )
+            ],
+          ),
         ],
       ),
     );

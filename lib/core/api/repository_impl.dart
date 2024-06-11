@@ -4,9 +4,135 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:mentis/core/api/repository.dart';
-import 'package:mentis/feature/auth/login/login_cubit.dart';
+import 'package:mentis/core/logger.dart';
+import 'package:mentis/core/models/general_response.dart';
 
+import '../../feature/auth/sign_up/sign_up_cubit.dart';
 import '../dio/dio_helper.dart';
+import '../models/get_doctor_model.dart';
+import '../models/login_response.dart';
+import '../models/reset_pass_model.dart';
+import '../models/show_doctor_model.dart';
+
+class RepoImpl extends Repository {
+  final DioHelper dioHelper;
+  RepoImpl(this.dioHelper);
+
+  @override
+  Future<Either<dynamic, LoginResponse>> login(
+      {required String email, required String password}) async {
+    return responseHandling<LoginResponse>(
+      onSuccess: () async {
+        final response = await dioHelper.post(
+          'login',
+          data: {'email': email, 'password': password},
+        );
+
+        return LoginResponse.fromJson(jsonDecode(response.data));
+      },
+    );
+  }
+
+  @override
+  Future<Either<dynamic, GeneralResponse>> logout() async {
+    return responseHandling<GeneralResponse>(
+      onSuccess: () async {
+        final f = await dioHelper.post('logout');
+        PrintLog.e(f);
+        PrintLog.e(f.data);
+        return GeneralResponse.fromJson(jsonDecode(f.data));
+      },
+    );
+  }
+
+  @override
+  Future<Either<dynamic, LoginResponse>> signup(SignUpParams params) async {
+    return responseHandling<LoginResponse>(
+      onSuccess: () async {
+        final f = await dioHelper.post('register', data: params.toMap());
+        return LoginResponse.fromJson(jsonDecode(f.data));
+      },
+    );
+  }
+
+  @override
+  Future<Either<dynamic, ResetPassResponse>> resetPassword({
+    required String userId,
+    required String oldPassword,
+    required String password,
+    required String passwordConfirmation,
+  }) {
+    return responseHandling<ResetPassResponse>(
+      onSuccess: () async {
+        final f = await dioHelper.post(
+          'reset/password',
+          data: {
+            'user_id': userId,
+            'old_password': oldPassword,
+            'password': password,
+            'password_confirmation': passwordConfirmation,
+          },
+        );
+        return ResetPassResponse.fromJson(jsonDecode(f.data));
+      },
+    );
+  }
+
+  @override
+  Future<Either<dynamic, GeneralResponse>> recoverPassword({required String email}) {
+    return responseHandling<GeneralResponse>(
+      onSuccess: () async {
+        final f = await dioHelper.post(
+          'recover/password',
+          data: {'email': email},
+        );
+        return GeneralResponse.fromJson(jsonDecode(f.data));
+      },
+    );
+  }
+
+  @override
+  Future<Either<dynamic, GeneralResponse>> checkCode(
+      {required String email, required String code}) {
+    return responseHandling<GeneralResponse>(
+      onSuccess: () async {
+        final f = await dioHelper.post(
+          'check/code',
+          data: {
+            'email': email,
+            'code': code,
+          },
+        );
+        return GeneralResponse.fromJson(jsonDecode(f.data));
+      },
+    );
+  }
+
+  @override
+  Future<Either<dynamic, GetDoctorResponse>> getAllDoctor({String? search}) {
+    return responseHandling<GetDoctorResponse>(
+      onSuccess: () async {
+        final f = await dioHelper.get(
+          'doctors/all',
+          queryParams: {
+            'search': search,
+          },
+        );
+        return GetDoctorResponse.fromJson(jsonDecode(f.data));
+      },
+    );
+  }
+
+  @override
+  Future<Either<dynamic, ShowDoctorResponse>> showDoctor(String id) {
+    return responseHandling<ShowDoctorResponse>(
+      onSuccess: () async {
+        final f = await dioHelper.get('doctors/show/$id');
+        return ShowDoctorResponse.fromJson(jsonDecode(f.data));
+      },
+    );
+  }
+}
 
 extension on Repository {
   dynamic onServerErrorBase(dynamic e) {
@@ -35,8 +161,7 @@ extension on Repository {
     return e.toString();
   }
 
-  // ignore: unused_element
-  Future<Either<String, T>> _responseHandling<T>({
+  Future<Either<String, T>> responseHandling<T>({
     required Future<T> Function() onSuccess,
     Future<String> Function(Exception exception)? onOtherError,
   }) async {
@@ -53,25 +178,5 @@ extension on Repository {
       final f = onServerErrorBase(e);
       return Left(f.toString());
     }
-  }
-}
-
-class RepoImpl extends Repository {
-  final DioHelper dioHelper;
-  RepoImpl(this.dioHelper);
-
-  @override
-  Future<Either<dynamic, LoginResponse>> login(
-      {required String email, required String password}) async {
-    return _responseHandling<LoginResponse>(
-      onSuccess: () async {
-        final response = await dioHelper.post(
-          'login',
-          data: {'email': email, 'password': password},
-        );
-
-        return LoginResponse.fromJson(jsonDecode(response.data));
-      },
-    );
   }
 }

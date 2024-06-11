@@ -15,20 +15,19 @@ class PaymentDone extends StatelessWidget {
         child: Column(
           //mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            verticalSpace(130),
+            130.sbH,
             Image.asset(Res.payment),
-            verticalSpace(20),
+            20.sbH,
             const Text(
-              "Congratulation",
+              'Congratulation',
               style: Styles.title32,
             ),
             const Text(
-              "Your Payment is Successfully",
+              'Your Payment is Successfully',
               style: Styles.title14,
             ),
-            verticalSpace(50),
-            CustomButton(
-                text: "Back", onPressed: () {}, horizontal: 130, vertical: 10)
+            50.sbH,
+            CustomButton(text: 'Back', onPressed: () {}, horizontal: 130, vertical: 10)
           ],
         ),
       ),

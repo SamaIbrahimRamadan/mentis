@@ -12,37 +12,36 @@ class DoctorNotificationBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text('Messages', style: Styles.title20),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.notifications_none,
+                size: 28,
+              ),
+            ),
+          ],
+        ),
+      ),
       body: Column(
         children: [
-          verticalSpace(40),
-          Row(
-            children: [
-              horizontalSpace(140),
-              const Text(
-                "Messages",
-                style: Styles.title20,
-              ),
-              horizontalSpace(80),
-              IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.notifications_none,
-                    size: 28,
-                  )),
-            ],
-          ),
-          verticalSpace(30),
+          30.sbH,
           const CustomTextFieldSearch(
             hintText: 'Search',
             icons3: Icons.search,
             icon2: (Icons.mic),
           ),
-          verticalSpace(20),
+          20.sbH,
           Container(
             margin: const EdgeInsets.only(right: 195),
-            child: const Text("Active Now", style: Styles.title22),
+            child: const Text('Active Now', style: Styles.title22),
           ),
-          verticalSpace(20),
+          20.sbH,
           SizedBox(
             height: 80,
             child: Expanded(
@@ -57,7 +56,7 @@ class DoctorNotificationBody extends StatelessWidget {
           ),
           Container(
             margin: const EdgeInsets.only(right: 205),
-            child: const Text("Messages", style: Styles.title22),
+            child: const Text('Messages', style: Styles.title22),
           ),
           Expanded(
             child: Padding(
@@ -66,9 +65,7 @@ class DoctorNotificationBody extends StatelessWidget {
                 itemBuilder: (BuildContext context, int index) {
                   return const ListViewItemMessages();
                 },
-                separatorBuilder: (BuildContext context, int index) {
-                  return verticalSpace(14);
-                },
+                separatorBuilder: (x, i) => 14.sbH,
                 itemCount: 4,
               ),
             ),

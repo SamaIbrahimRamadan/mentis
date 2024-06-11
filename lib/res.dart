@@ -12,7 +12,7 @@ class Res {
   static const String color = 'assets/color.png';
   static const String color1 = 'assets/color1.png';
   static const String color2 = 'assets/color2.png';
-  static const String color_vr = 'assets/color_vr.png';
+  static const String colorVr = 'assets/color_vr.png';
   static const String colorImage = 'assets/colorImage.png';
   static const String doctorImage = 'assets/doctorImage.png';
   static const String image = 'assets/image.png';
@@ -37,9 +37,11 @@ class Res {
   static const String reality = 'assets/reality.png';
   static const String recover = 'assets/recover.png';
   static const String reset = 'assets/reset.png';
-  static const String sign_up = 'assets/sign_up.png';
-  static const String social_image = 'assets/social_image.png';
+  static const String signUp = 'assets/sign_up.png';
+  static const String socialImage = 'assets/social_image.png';
   static const String surance = 'assets/surance.png';
   static const String vr = 'assets/vr.png';
   static const String watch = 'assets/watch.png';
+  static const String mastercard = 'assets/mastercard.png';
+  static const String cardBg = 'assets/card_bg.png';
 }

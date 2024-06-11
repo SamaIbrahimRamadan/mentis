@@ -13,4 +13,5 @@ class CachingKey extends Enum<String> {
   static const String verified = 'verified';
   static const String isLogged = 'isLogged';
   static const String onBoarding = 'onBoarding';
+  static const String token = 'token';
 }

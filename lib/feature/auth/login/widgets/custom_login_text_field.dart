@@ -22,13 +22,13 @@ class _CustomLoginTextFieldState extends State<CustomLoginTextField> {
     return Column(
       children: [
         CustomTextField(
-          hintText: "email",
+          hintText: 'email',
           controller: widget.controller,
           type: TextInputType.emailAddress,
         ),
-        verticalSpace(30),
+        30.sbH,
         CustomTextField(
-          hintText: "Password",
+          hintText: 'Password',
           icon2: Icons.visibility_off,
           controller: widget.controllerPass,
           type: TextInputType.visiblePassword,
@@ -39,7 +39,7 @@ class _CustomLoginTextFieldState extends State<CustomLoginTextField> {
           },
           isObscure: isObscure,
         ),
-        verticalSpace(10),
+        10.sbH,
         Container(
           margin: const EdgeInsets.only(left: 200),
           child: GestureDetector(
@@ -47,12 +47,12 @@ class _CustomLoginTextFieldState extends State<CustomLoginTextField> {
               NamedNavigatorImpl.pushNamed(Routes.kRecoverPass);
             },
             child: const Text(
-              "Recover password",
+              'Recover password',
               style: Styles.title14,
             ),
           ),
         ),
-        verticalSpace(30),
+        30.sbH,
       ],
     );
   }

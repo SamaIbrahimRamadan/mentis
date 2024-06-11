@@ -13,7 +13,7 @@ class CustomLoginText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        verticalSpace(30),
+        30.sbH,
         const Text(
           "Don't have account",
           style: Styles.title14,
@@ -23,7 +23,7 @@ class CustomLoginText extends StatelessWidget {
             NamedNavigatorImpl.pushNamed(Routes.kSignUp);
           },
           child: Text(
-            "Sign up ",
+            'Sign up ',
             style: Styles.title14.copyWith(color: ColorManger.mainColor),
           ),
         )
