@@ -5,7 +5,6 @@ import '../../../../../core/models/get_doctor_model.dart';
 import '../../../../../core/theme/color.dart';
 import '../../../../../core/theme/styles.dart';
 import '../../../../../core/widget/button.dart';
-import '../../../../../res.dart';
 
 class DoctorListView extends StatefulWidget {
   final GetDoctorResponse model;
@@ -31,12 +30,23 @@ class _DoctorListViewState extends State<DoctorListView> {
     return Container(
       width: 290,
       height: 170,
-      decoration: BoxDecoration(
-          color: ColorManger.light, borderRadius: BorderRadius.circular(10)),
+      decoration: BoxDecoration(color: ColorManger.light, borderRadius: BorderRadius.circular(10)),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          Container(
+            width: 100,
+            height: 100,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              image: DecorationImage(
+                image: NetworkImage(model.image),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
           8.sbW,
-          Image.asset(Res.doctorImage, height: 150),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -44,10 +54,10 @@ class _DoctorListViewState extends State<DoctorListView> {
                 children: [
                   Text(
                     model.name,
-                    style: Styles.title18.copyWith(
-                        color: Colors.black, fontWeight: FontWeight.w500),
+                    style:
+                        Styles.title18.copyWith(color: Colors.black, fontWeight: FontWeight.w500),
                   ),
-                  70.sbW,
+                  100.sbW,
                   IconButton(
                       onPressed: () {
                         setState(() {
@@ -75,8 +85,7 @@ class _DoctorListViewState extends State<DoctorListView> {
                   model.desc,
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
-                  style: Styles.title14.copyWith(
-                      color: Colors.black, fontWeight: FontWeight.w500),
+                  style: Styles.title14.copyWith(color: Colors.black, fontWeight: FontWeight.w500),
                 ),
               ),
               10.sbH,

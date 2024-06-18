@@ -2,20 +2,21 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:mentis/feature/games/views/random_game/random_game_data.dart';
+import 'package:mentis/feature/games/views/random_game/random_game_widgets.dart';
 
-class GameWidget extends StatefulWidget {
-  const GameWidget({super.key});
+class RandomGameScreen extends StatefulWidget {
+  const RandomGameScreen({super.key});
 
   @override
-  State<GameWidget> createState() => _GameWidgetState();
+  State<RandomGameScreen> createState() => _RandomGameScreenState();
 }
 
-class _GameWidgetState extends State<GameWidget> {
+class _RandomGameScreenState extends State<RandomGameScreen> {
   static final _rng = Random();
-
   late Alignment _playerAlignment;
   late List<Alignment> _targets;
-  late TargetData _targetData;
+  late RandomGameTargetData _targetData;
   int _score = 0;
   bool _gameInProgress = false;
   final GameTimer _gameTimer = GameTimer();
@@ -35,12 +36,12 @@ class _GameWidgetState extends State<GameWidget> {
   }
 
   void _randomize() {
-    _targetData = TargetData(
+    _targetData = RandomGameTargetData(
       type: TargetType.values[_rng.nextInt(2)],
-      index: _rng.nextInt(_targetColors.length),
+      index: _rng.nextInt(targetColors.length),
     );
     _targets = [
-      for (var i = 0; i < _targetColors.length; i++)
+      for (var i = 0; i < targetColors.length; i++)
         Alignment(
           _rng.nextDouble() * 2 - 1,
           _rng.nextDouble() * 2 - 1,
@@ -57,7 +58,7 @@ class _GameWidgetState extends State<GameWidget> {
     _gameTimer.startGame();
   }
 
-  // This method contains most of the game logic
+  /// This method contains most of the game logic
   void _handleTapDown(TapDownDetails details, int? selectedIndex) {
     if (!_gameInProgress) {
       return;
@@ -109,14 +110,14 @@ class _GameWidgetState extends State<GameWidget> {
               ),
             ),
           ),
-          for (var i = 0; i < _targetColors.length; i++)
+          for (var i = 0; i < targetColors.length; i++)
             GestureDetector(
               onTapDown: (details) => _handleTapDown(details, i),
               child: Align(
                 alignment: _targets[i],
-                child: Target(
-                  color: _targetColors[i],
-                  textColor: _textColors[i],
+                child: RandomGameTargetWidget(
+                  color: targetColors[i],
+                  textColor: textColors[i],
                   text: i.toString(),
                 ),
               ),
@@ -162,100 +163,5 @@ class _GameWidgetState extends State<GameWidget> {
         ],
       ),
     );
-  }
-}
-
-class Target extends StatelessWidget {
-  const Target({
-    super.key,
-    required this.color,
-    required this.textColor,
-    required this.text,
-  });
-  final Color color;
-  final Color textColor;
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 75,
-      height: 75,
-      decoration: BoxDecoration(color: color, shape: BoxShape.circle),
-      child: Align(
-        alignment: Alignment.center,
-        child: Text(
-          text,
-          style: TextStyle(
-            fontSize: 50,
-            fontWeight: FontWeight.bold,
-            color: textColor,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class TextPrompt extends StatelessWidget {
-  const TextPrompt(
-    this.text, {
-    super.key,
-    required this.color,
-    this.fontSize = 32,
-  });
-  final String text;
-  final Color color;
-  final double fontSize;
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedDefaultTextStyle(
-      duration: const Duration(milliseconds: 250),
-      style: TextStyle(
-        color: color,
-        fontWeight: FontWeight.bold,
-        fontSize: fontSize,
-        shadows: const [
-          Shadow(
-            blurRadius: 4.0,
-            color: Colors.black,
-            offset: Offset(0.0, 2.0),
-          ),
-        ],
-      ),
-      child: Text(text),
-    );
-  }
-}
-
-const _targetColors = [Colors.orange, Colors.green, Colors.yellow, Colors.blue];
-const _textColors = [Colors.blue, Colors.yellow, Colors.green, Colors.orange];
-const _colorNames = ['orange', 'green', 'yellow', 'blue'];
-
-enum TargetType { color, number }
-
-class TargetData {
-  TargetData({required this.type, required this.index});
-  final TargetType type;
-  final int index;
-
-  String get text => type == TargetType.color ? 'COLOR ${_colorNames[index]}' : 'NUMBER $index';
-  Color get color => _textColors[index];
-}
-
-class GameTimer {
-  Timer? _timer;
-  ValueNotifier<int> remainingSeconds = ValueNotifier<int>(10);
-
-  void startGame() {
-    _timer?.cancel();
-    remainingSeconds.value = 120;
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      remainingSeconds.value--;
-      if (remainingSeconds.value == 0) {
-        _timer?.cancel();
-      }
-    });
   }
 }

@@ -20,9 +20,7 @@ class ProfilePageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          centerTitle: true,
-          title: const Text('My Profile', style: Styles.title20)),
+      appBar: AppBar(centerTitle: true, title: const Text('My Profile', style: Styles.title20)),
       body: BlocProvider(
         create: (context) => di<ProfileCubit>(),
         child: Column(
@@ -87,7 +85,10 @@ class LogOutBtn extends StatelessWidget {
             return CustomProfileWidget(
               text: 'Log out ',
               icon: Icons.login,
-              onTap: () => cubit.logout(),
+              onTap: () {
+                print('x' * 100);
+                cubit.logout();
+              },
             );
           },
         );

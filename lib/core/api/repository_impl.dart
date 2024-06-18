@@ -80,8 +80,7 @@ class RepoImpl extends Repository {
   }
 
   @override
-  Future<Either<dynamic, GeneralResponse>> recoverPassword(
-      {required String email}) {
+  Future<Either<dynamic, GeneralResponse>> recoverPassword({required String email}) {
     return responseHandling<GeneralResponse>(
       onSuccess: () async {
         final f = await dioHelper.post(
