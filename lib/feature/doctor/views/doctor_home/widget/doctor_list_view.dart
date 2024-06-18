@@ -31,7 +31,8 @@ class _DoctorListViewState extends State<DoctorListView> {
     return Container(
       width: 290,
       height: 170,
-      decoration: BoxDecoration(color: ColorManger.light, borderRadius: BorderRadius.circular(10)),
+      decoration: BoxDecoration(
+          color: ColorManger.light, borderRadius: BorderRadius.circular(10)),
       child: Row(
         children: [
           8.sbW,
@@ -43,8 +44,8 @@ class _DoctorListViewState extends State<DoctorListView> {
                 children: [
                   Text(
                     model.name,
-                    style:
-                        Styles.title18.copyWith(color: Colors.black, fontWeight: FontWeight.w500),
+                    style: Styles.title18.copyWith(
+                        color: Colors.black, fontWeight: FontWeight.w500),
                   ),
                   70.sbW,
                   IconButton(
@@ -74,7 +75,8 @@ class _DoctorListViewState extends State<DoctorListView> {
                   model.desc,
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
-                  style: Styles.title14.copyWith(color: Colors.black, fontWeight: FontWeight.w500),
+                  style: Styles.title14.copyWith(
+                      color: Colors.black, fontWeight: FontWeight.w500),
                 ),
               ),
               10.sbH,

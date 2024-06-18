@@ -24,9 +24,16 @@ class NotePageBody extends StatelessWidget {
                   style: Styles.title24,
                 ),
                 170.sbW,
-                CustomIconButton(onTap: () {}, icon: Icons.search),
+                CustomIconButton(
+                  onTap: () {},
+                  icon: Icons.search,
+                  colorIcon: Colors.white,
+                ),
                 30.sbW,
-                CustomIconButton(onTap: () {}, icon: Icons.settings_input_svideo_outlined),
+                CustomIconButton(
+                    onTap: () {},
+                    icon: Icons.settings_input_svideo_outlined,
+                    colorIcon: Colors.white),
               ],
             ),
             Image.asset(Res.note2),
@@ -36,9 +43,14 @@ class NotePageBody extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: ColorManger.mainColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(50),
+          side: const BorderSide(color: ColorManger.mainColor),
+        ),
         onPressed: () {},
         child: const Icon(
           Icons.add,
+          color: Colors.white,
           size: 35,
         ),
       ),

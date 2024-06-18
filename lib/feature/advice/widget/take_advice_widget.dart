@@ -21,7 +21,7 @@ class TakeAdviceWidget extends StatelessWidget {
         children: [
           Image.asset(
             Res.color2,
-            width: 330,
+            width: 350,
           ),
           Positioned(
             left: 230,

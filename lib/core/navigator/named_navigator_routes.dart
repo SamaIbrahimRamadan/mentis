@@ -24,6 +24,7 @@ class Routes {
   static const kGame = '/kGame';
   static const kLearnLetter = '/kLearnLetter';
   static const kLearnColor = '/kLearnColor';
+  static const kLearn = '/kLearn';
   static const kLearnSocialBehavior = '/kLearnSocialBehavior';
   static const kColoring = '/kColoring';
   static const kVrScore = '/kVrScore';

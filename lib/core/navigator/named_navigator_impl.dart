@@ -16,6 +16,7 @@ import 'package:mentis/feature/feedback/views/feedback_page_body.dart';
 import 'package:mentis/feature/feedback/views/manage_mode_advice.dart';
 import 'package:mentis/feature/feedback/views/send_feedback.dart';
 import 'package:mentis/feature/games/views/coloring.dart';
+import 'package:mentis/feature/games/views/game.dart';
 import 'package:mentis/feature/games/views/games.dart';
 import 'package:mentis/feature/games/views/learn_letter_page.dart';
 import 'package:mentis/feature/games/views/learn_social_behavior.dart';
@@ -33,7 +34,8 @@ import '../../feature/games/views/learn_color_page.dart';
 import 'named_navigator_routes.dart';
 
 class NamedNavigatorImpl {
-  static final GlobalKey<NavigatorState> navigatorState = GlobalKey<NavigatorState>();
+  static final GlobalKey<NavigatorState> navigatorState =
+      GlobalKey<NavigatorState>();
 
   static void pop({dynamic result}) {
     if (Navigator.of(navigatorState.currentState!.context).canPop()) {
@@ -41,26 +43,32 @@ class NamedNavigatorImpl {
     }
   }
 
-  static Future push(Widget screen, {bool replace = false, bool clean = false}) {
+  static Future push(Widget screen,
+      {bool replace = false, bool clean = false}) {
     if (clean) {
-      return navigatorState.currentState!
-          .pushAndRemoveUntil(MaterialPageRoute(builder: (_) => screen), (_) => false);
+      return navigatorState.currentState!.pushAndRemoveUntil(
+          MaterialPageRoute(builder: (_) => screen), (_) => false);
     } else if (replace) {
       return navigatorState.currentState!
           .pushReplacement(MaterialPageRoute(builder: (_) => screen));
     } else {
-      return navigatorState.currentState!.push(MaterialPageRoute(builder: (_) => screen));
+      return navigatorState.currentState!
+          .push(MaterialPageRoute(builder: (_) => screen));
     }
   }
 
-  static Future pushNamed(String routeName, {arguments, bool replace = false, bool clean = false}) {
+  static Future pushNamed(String routeName,
+      {arguments, bool replace = false, bool clean = false}) {
     if (clean) {
-      return navigatorState.currentState!
-          .pushNamedAndRemoveUntil(routeName, (_) => false, arguments: arguments);
+      return navigatorState.currentState!.pushNamedAndRemoveUntil(
+          routeName, (_) => false,
+          arguments: arguments);
     } else if (replace) {
-      return navigatorState.currentState!.pushReplacementNamed(routeName, arguments: arguments);
+      return navigatorState.currentState!
+          .pushReplacementNamed(routeName, arguments: arguments);
     } else {
-      return navigatorState.currentState!.pushNamed(routeName, arguments: arguments);
+      return navigatorState.currentState!
+          .pushNamed(routeName, arguments: arguments);
     }
   }
 
@@ -93,7 +101,8 @@ class NamedNavigatorImpl {
         return MaterialPageRoute(builder: (_) => const LearnColorPage());
 
       case Routes.kLearnSocialBehavior:
-        return MaterialPageRoute(builder: (_) => const LearnSocialBehaviorPage());
+        return MaterialPageRoute(
+            builder: (_) => const LearnSocialBehaviorPage());
 
       case Routes.kSendFeedback:
         return MaterialPageRoute(builder: (_) => const SendFeedBack());
@@ -105,7 +114,8 @@ class NamedNavigatorImpl {
         return MaterialPageRoute(builder: (_) => const DoctorChatPage());
 
       case Routes.kNotificationDoctor:
-        return MaterialPageRoute(builder: (_) => const DoctorNotificationPage());
+        return MaterialPageRoute(
+            builder: (_) => const DoctorNotificationPage());
 
       case Routes.kDoctorHome:
         return MaterialPageRoute(builder: (_) => const DoctorButtonNavPage());
@@ -128,7 +138,6 @@ class NamedNavigatorImpl {
       case Routes.kAdvice:
         return MaterialPageRoute(builder: (_) => const AdvicePage());
 
-
       case Routes.kEditProfile:
         return MaterialPageRoute(builder: (_) => const EditProfile());
 
@@ -146,6 +155,8 @@ class NamedNavigatorImpl {
 
       case Routes.kOnBoarding:
         return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
+      case Routes.kLearn:
+        return MaterialPageRoute(builder: (_) => const GameWidget());
 
       case Routes.kMainPage:
         return MaterialPageRoute(builder: (_) => const MainPageScreen());
@@ -153,10 +164,8 @@ class NamedNavigatorImpl {
       case Routes.kTakeAdvice:
         return MaterialPageRoute(builder: (_) => const TakeAdvice());
 
-
       case Routes.kSignUp:
         return MaterialPageRoute(builder: (_) => const SignUpScreen());
-
 
       ///
     }

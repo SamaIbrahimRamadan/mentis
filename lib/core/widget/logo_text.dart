@@ -8,9 +8,16 @@ import '../theme/styles.dart';
 
 class CustomLogoText extends StatelessWidget {
   final String? text, img;
-  final double? x, y;
+  final double? x, y, z;
   final void Function() onPressed;
-  const CustomLogoText({super.key, this.text, this.img, required this.onPressed, this.x, this.y});
+  const CustomLogoText(
+      {super.key,
+      this.text,
+      this.img,
+      required this.onPressed,
+      this.x,
+      this.y,
+      this.z});
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +34,10 @@ class CustomLogoText extends StatelessWidget {
         (y ?? 70).sbW,
         Text(
           text ?? '',
-          style: Styles.title20.copyWith(color: ColorManger.mainColor, fontWeight: FontWeight.bold),
+          style: Styles.title20.copyWith(
+              color: ColorManger.mainColor, fontWeight: FontWeight.bold),
         ),
-        // 50.sbW,
+        (z ?? 0).sbW,
         Image.asset(Res.img, width: 70)
       ],
     );

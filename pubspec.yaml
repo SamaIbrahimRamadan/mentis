@@ -29,10 +29,10 @@ dependencies:
   dartz: ^0.10.1
   rxdart: ^0.27.7
   shared_preferences: ^2.2.3
-  ua_client_hints: ^1.2.2
   logger:
   animate_do: ^3.3.4
   mqtt_client: ^10.2.1
+
 
 dev_dependencies:
   flutter_test:

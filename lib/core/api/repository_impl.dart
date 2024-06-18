@@ -9,6 +9,7 @@ import 'package:mentis/core/models/general_response.dart';
 
 import '../../feature/auth/sign_up/sign_up_cubit.dart';
 import '../dio/dio_helper.dart';
+import '../models/edit_profile_model.dart';
 import '../models/get_doctor_model.dart';
 import '../models/login_response.dart';
 import '../models/reset_pass_model.dart';
@@ -79,7 +80,8 @@ class RepoImpl extends Repository {
   }
 
   @override
-  Future<Either<dynamic, GeneralResponse>> recoverPassword({required String email}) {
+  Future<Either<dynamic, GeneralResponse>> recoverPassword(
+      {required String email}) {
     return responseHandling<GeneralResponse>(
       onSuccess: () async {
         final f = await dioHelper.post(
@@ -129,6 +131,33 @@ class RepoImpl extends Repository {
       onSuccess: () async {
         final f = await dioHelper.get('doctors/show/$id');
         return ShowDoctorResponse.fromJson(jsonDecode(f.data));
+      },
+    );
+  }
+
+  @override
+  Future<Either<dynamic, EditProfileModel>> editProfile({
+    required String phone,
+    required String email,
+  }) {
+    return responseHandling<EditProfileModel>(
+      onSuccess: () async {
+        final f = await dioHelper.post('users/edit/profile',
+            data: FormData.fromMap({
+              'email': email,
+              'phone': phone,
+            }));
+        return EditProfileModel.fromJson(jsonDecode(f.data));
+      },
+    );
+  }
+
+  @override
+  Future<Either<dynamic, LoginResponse>> profile() {
+    return responseHandling<LoginResponse>(
+      onSuccess: () async {
+        final f = await dioHelper.get('users/edit/profile');
+        return LoginResponse.fromJson(jsonDecode(f.data));
       },
     );
   }

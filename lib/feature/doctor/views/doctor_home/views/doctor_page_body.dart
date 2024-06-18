@@ -6,6 +6,8 @@ import 'package:mentis/core/widget/app_loader.dart';
 import 'package:mentis/feature/doctor/widgets/custom_search.dart';
 
 import '../../../../../core/api/di.dart';
+import '../../../../../core/navigator/named_navigator_impl.dart';
+import '../../../../../core/theme/color.dart';
 import '../get_all_doctor_cubit.dart';
 import '../widget/doctor_list_view.dart';
 
@@ -21,6 +23,19 @@ class _DoctorPageBodyState extends State<DoctorPageBody> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 20.0),
+          child: IconButton(
+            onPressed: () {
+              NamedNavigatorImpl.pop();
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              color: ColorManger.mainColor,
+            ),
+          ),
+        ),
+        centerTitle: true,
         title: const Text(
           'All Doctors',
           style: Styles.title18,
@@ -34,6 +49,7 @@ class _DoctorPageBodyState extends State<DoctorPageBody> {
             final model = GetAllDoctorCubit.get(context).doctorData;
             return Column(
               children: [
+                20.sbH,
                 const CustomTextFieldSearch(
                   hintText: 'Search',
                   icons3: Icons.search,
@@ -47,7 +63,8 @@ class _DoctorPageBodyState extends State<DoctorPageBody> {
                           padding: const EdgeInsets.only(left: 33, right: 33),
                           child: ListView.separated(
                             itemCount: model!.data.length,
-                            itemBuilder: (c, i) => DoctorListView(model: model, index: i),
+                            itemBuilder: (c, i) =>
+                                DoctorListView(model: model, index: i),
                             separatorBuilder: (c, i) => 14.sbH,
                           ),
                         ),

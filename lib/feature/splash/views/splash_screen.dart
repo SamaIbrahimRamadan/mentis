@@ -21,7 +21,7 @@ class SplashScreen extends StatelessWidget {
       child: BlocConsumer<SplashCubit, SplashState>(
         listener: (context, state) {
           if (state is UnAuthenticatedState) {
-            NamedNavigatorImpl.pushNamed(Routes.kLogin, clean: true);
+            NamedNavigatorImpl.pushNamed(Routes.kOnBoarding, clean: true);
           }
           if (state is AuthenticatedState) {
             NamedNavigatorImpl.pushNamed(Routes.kHome, clean: true);
@@ -54,8 +54,9 @@ class SplashScreen extends StatelessWidget {
                         ? const SizedBox()
                         : CustomButton(
                             text: "Let's Start",
-                            onPressed: () =>
-                                NamedNavigatorImpl.pushNamed(Routes.kOnBoarding, clean: true),
+                            onPressed: () => NamedNavigatorImpl.pushNamed(
+                              Routes.kOnBoarding,
+                            ), // clean: true),
                             horizontal: 100,
                             color: Colors.white,
                             color2: ColorManger.mainColor,

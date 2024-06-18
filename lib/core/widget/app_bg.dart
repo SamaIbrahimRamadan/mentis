@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mentis/core/helper/spacing.dart';
 
-import '../../../core/helper/spacing.dart';
 import '../../../core/theme/styles.dart';
 import '../../../res.dart';
 
@@ -24,15 +24,16 @@ class AppBg extends StatelessWidget {
         backgroundColor: Colors.transparent,
         appBar: AppBar(
           title: Row(
-            mainAxisAlignment:
-                title != null ? MainAxisAlignment.spaceAround : MainAxisAlignment.center,
+            mainAxisAlignment: title != null
+                ? MainAxisAlignment.spaceAround
+                : MainAxisAlignment.center,
             children: [
               if (title == null) ...[
                 Text(
                   title ?? '',
                   style: Styles.title20.copyWith(color: Colors.white),
                 ),
-                60.sbW
+                80.sbW,
               ],
               Image.asset(
                 Res.logo2,

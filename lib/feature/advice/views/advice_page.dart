@@ -19,11 +19,11 @@ class AdvicePage extends StatelessWidget {
         children: [
           50.sbH,
           CustomLogoText(
-              y: 150,
+              y: 200,
               onPressed: () {
                 NamedNavigatorImpl.pushNamed(Routes.kHome);
               }),
-          20.sbH,
+          40.sbH,
           const Text('The Advice', style: Styles.title20),
           15.sbH,
           Image.asset(Res.advice2),

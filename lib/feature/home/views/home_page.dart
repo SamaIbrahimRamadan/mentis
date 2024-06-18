@@ -20,6 +20,7 @@ class HomePage extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
+            40.sbH,
             Stack(
               children: [
                 Image.asset(Res.image),
@@ -28,7 +29,7 @@ class HomePage extends StatelessWidget {
                   onPressed: () {
                     NamedNavigatorImpl.pushNamed(Routes.kDoctorHome);
                   },
-                  horizontal: 30,
+                  horizontal: 20,
                   vertical: 10,
                   color: Colors.white,
                   color2: ColorManger.mainColor,

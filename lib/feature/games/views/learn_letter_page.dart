@@ -30,7 +30,7 @@ class _LearnLetterPageState extends State<LearnLetterPage> {
               10.sbW,
               IconButton(
                   onPressed: () {
-                    NamedNavigatorImpl.pushNamed(Routes.kFeedback);
+                    NamedNavigatorImpl.pop();
                   },
                   icon: const Icon(
                     Icons.arrow_back_ios,
@@ -84,7 +84,14 @@ class _LearnLetterPageState extends State<LearnLetterPage> {
                       curve: Curves.fastLinearToSlowEaseIn);
                 }
               },
-              child: const Icon(Icons.arrow_forward),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(50),
+                side: const BorderSide(color: ColorManger.mainColor),
+              ),
+              child: const Icon(
+                Icons.arrow_forward,
+                color: Colors.white,
+              ),
             ),
           )
         ],

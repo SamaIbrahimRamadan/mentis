@@ -20,11 +20,14 @@ class ProfilePageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('My Profile', style: Styles.title20)),
+      appBar: AppBar(
+          centerTitle: true,
+          title: const Text('My Profile', style: Styles.title20)),
       body: BlocProvider(
         create: (context) => di<ProfileCubit>(),
         child: Column(
           children: [
+            50.sbH,
             Row(
               children: [
                 50.sbW,

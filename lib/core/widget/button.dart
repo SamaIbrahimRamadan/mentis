@@ -23,10 +23,11 @@ class CustomButton extends StatelessWidget {
         style: ButtonStyle(
             shape: WidgetStatePropertyAll(RoundedRectangleBorder(
                 side: const BorderSide(width: 1, color: ColorManger.mainColor),
-                borderRadius: BorderRadius.circular(15))),
-            padding: WidgetStatePropertyAll(
-                EdgeInsets.symmetric(vertical: vertical, horizontal: horizontal)),
-            backgroundColor: WidgetStatePropertyAll(color ?? ColorManger.mainColor)),
+                borderRadius: BorderRadius.circular(20))),
+            padding: WidgetStatePropertyAll(EdgeInsets.symmetric(
+                vertical: vertical, horizontal: horizontal)),
+            backgroundColor:
+                WidgetStatePropertyAll(color ?? ColorManger.mainColor)),
         onPressed: onPressed,
         child: Text(
           text,

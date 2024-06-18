@@ -38,7 +38,7 @@ class _CustomSignUpTextFieldState extends State<CustomSignUpTextField> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              width: 150,
+              width: 185,
               child: CustomTextField(
                 hintText: 'Name',
                 type: TextInputType.name,
@@ -47,7 +47,7 @@ class _CustomSignUpTextFieldState extends State<CustomSignUpTextField> {
             ),
             15.sbW,
             SizedBox(
-              width: 160,
+              width: 185,
               child: CustomTextField(
                 hintText: 'last',
                 type: TextInputType.name,

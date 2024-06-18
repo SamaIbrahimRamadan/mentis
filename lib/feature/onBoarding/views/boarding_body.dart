@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mentis/core/theme/color.dart';
 import 'package:mentis/feature/onBoarding/model/model.dart';
-
 import '../../../core/navigator/named_navigator_impl.dart';
 import '../../../core/navigator/named_navigator_routes.dart';
 import '../widget/boarding_widget.dart';

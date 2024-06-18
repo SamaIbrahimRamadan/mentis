@@ -7,7 +7,9 @@ import '../../../../../core/theme/styles.dart';
 import 'list_view_item_circle_avatar.dart';
 
 class ListViewItemMessages extends StatelessWidget {
-  const ListViewItemMessages({super.key});
+  const ListViewItemMessages({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -31,22 +33,23 @@ class ListViewItemMessages extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    'Dr.Sara',
-                    style:
-                        Styles.title18.copyWith(color: Colors.black, fontWeight: FontWeight.w500),
+                    'Dr.Ahmed',
+                    style: Styles.title18.copyWith(
+                        color: Colors.black, fontWeight: FontWeight.w500),
                   ),
                   130.sbW,
                   Text(
                     '12:50',
-                    style:
-                        Styles.title14.copyWith(color: Colors.black, fontWeight: FontWeight.w500),
+                    style: Styles.title14.copyWith(
+                        color: Colors.black, fontWeight: FontWeight.w500),
                   ),
                 ],
               ),
               10.sbH,
               Text(
                 'how are you ? what are you feel now ? ',
-                style: Styles.title14.copyWith(color: Colors.black, fontWeight: FontWeight.w500),
+                style: Styles.title14
+                    .copyWith(color: Colors.black, fontWeight: FontWeight.w500),
               ),
               10.sbH,
             ]),

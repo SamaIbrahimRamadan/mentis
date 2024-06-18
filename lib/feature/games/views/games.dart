@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mentis/core/helper/spacing.dart';
+import 'package:mentis/core/widget/app_bg.dart';
 import 'package:mentis/feature/games/widgets/home_game_widget.dart';
 
 import '../../../core/navigator/named_navigator_impl.dart';
 import '../../../core/navigator/named_navigator_routes.dart';
-import '../../../core/widget/app_bg.dart';
 import '../../../res.dart';
 
 class GamesScreen extends StatelessWidget {
@@ -17,6 +18,7 @@ class GamesScreen extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
+              20.sbH,
               HomeGameWidget(
                 text: 'Learn Color',
                 image: Res.learnColor,
@@ -24,6 +26,7 @@ class GamesScreen extends StatelessWidget {
                   NamedNavigatorImpl.pushNamed(Routes.kLearnColor);
                 },
               ),
+              20.sbH,
               HomeGameWidget(
                 text: 'Learn Letter',
                 image: Res.learnLetter,
@@ -31,11 +34,21 @@ class GamesScreen extends StatelessWidget {
                   NamedNavigatorImpl.pushNamed(Routes.kLearnLetter);
                 },
               ),
+              20.sbH,
               HomeGameWidget(
                 text: 'Social behaviour ',
                 image: Res.puzzle,
                 onTap: () {
-                  NamedNavigatorImpl.pushNamed(Routes.kLearnSocialBehavior);
+                  NamedNavigatorImpl.pushNamed(Routes.kLearnSocialBehavior,
+                      clean: true);
+                },
+              ),
+              20.sbH,
+              HomeGameWidget(
+                text: 'Play Game ',
+                image: Res.puzzle,
+                onTap: () {
+                  NamedNavigatorImpl.pushNamed(Routes.kLearn);
                 },
               )
             ],

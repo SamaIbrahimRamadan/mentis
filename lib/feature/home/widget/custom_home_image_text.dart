@@ -24,15 +24,16 @@ class CustomHomeWidget extends StatelessWidget {
       child: Container(
         width: 350,
         height: 100,
-        decoration: BoxDecoration(color: ColorManger.gray, borderRadius: BorderRadius.circular(20)),
+        decoration: BoxDecoration(
+            color: ColorManger.gray, borderRadius: BorderRadius.circular(20)),
         child: Row(
           children: [
             Container(
               margin: const EdgeInsets.only(left: 15),
-              // width: 80,
+              width: 80,
               height: 80,
-              decoration:
-                  BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20)),
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(20)),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

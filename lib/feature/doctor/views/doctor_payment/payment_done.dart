@@ -3,6 +3,7 @@ import 'package:mentis/core/helper/spacing.dart';
 import 'package:mentis/core/theme/styles.dart';
 import 'package:mentis/core/widget/button.dart';
 
+import '../../../../core/navigator/named_navigator_impl.dart';
 import '../../../../res.dart';
 
 class PaymentDone extends StatelessWidget {
@@ -27,7 +28,13 @@ class PaymentDone extends StatelessWidget {
               style: Styles.title14,
             ),
             50.sbH,
-            CustomButton(text: 'Back', onPressed: () {}, horizontal: 130, vertical: 10)
+            CustomButton(
+                text: 'Back',
+                onPressed: () {
+                  NamedNavigatorImpl.pop();
+                },
+                horizontal: 130,
+                vertical: 10)
           ],
         ),
       ),

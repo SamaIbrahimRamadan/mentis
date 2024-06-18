@@ -3,7 +3,6 @@ import 'package:get_it/get_it.dart';
 import 'package:mentis/core/api/repository.dart';
 import 'package:mentis/core/api/repository_impl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:ua_client_hints/ua_client_hints.dart';
 
 import '../../feature/auth/login/login_cubit.dart';
 import '../../feature/auth/sign_up/sign_up_cubit.dart';
@@ -23,11 +22,12 @@ Future init() async {
   final sp = await SharedPreferences.getInstance();
   di.registerLazySingleton<SharedPreferences>(() => sp);
   // di.registerLazySingleton<AppNavigator>(() => AppNavigator());
-  final userAgent = await userAgentClientHintsHeader();
+  //final userAgent = await userAgentClientHintsHeader();
   di.registerLazySingleton<NetworkCubit>(() => NetworkCubit());
   di.registerLazySingleton<DioHelper>(
     () => DioImpl(
-      userAgent: userAgent.values.first.toString(),
+      userAgent:
+          'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Mobile Safari/537.36',
       baseURL: dotenv.env['BASE_URL']!,
       onRequest: di<NetworkCubit>().onRequestCallback,
       onError: di<NetworkCubit>().onErrorCallback,
@@ -36,10 +36,12 @@ Future init() async {
 
   di.registerFactory<SplashCubit>(() => SplashCubit());
   di.registerLazySingleton<Repository>(() => RepoImpl(di<DioHelper>()));
-  di.registerLazySingleton<CacheHelper>(() => CacheImpl(di<SharedPreferences>()));
+  di.registerLazySingleton<CacheHelper>(
+      () => CacheImpl(di<SharedPreferences>()));
   di.registerFactory<LoginCubit>(() => LoginCubit(di<Repository>()));
   di.registerFactory<SignUpCubit>(() => SignUpCubit(di<Repository>()));
   di.registerFactory<HomeCubit>(() => HomeCubit(di<Repository>()));
   di.registerFactory<ProfileCubit>(() => ProfileCubit(di<Repository>()));
-  di.registerFactory<GetAllDoctorCubit>(() => GetAllDoctorCubit(di<Repository>()));
+  di.registerFactory<GetAllDoctorCubit>(
+      () => GetAllDoctorCubit(di<Repository>()));
 }

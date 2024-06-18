@@ -21,6 +21,11 @@ class VerificationScreen extends StatefulWidget {
 class _VerificationScreenState extends State<VerificationScreen> {
   late Timer _timer;
   int _start = 60;
+  @override
+  void initState() {
+    startTimer();
+    super.initState();
+  }
 
   void startTimer() {
     const oneSec = Duration(seconds: 1);
@@ -53,9 +58,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
           const CustomVerificationTextImage(),
           InkWell(
-            onTap: () {
-              startTimer();
-            },
+            onTap: () {},
             child: Text(
               '00.$_start',
               style: Styles.title16,
@@ -84,7 +87,8 @@ class _VerificationScreenState extends State<VerificationScreen> {
             vertical: 10,
           ),
           30.sbH,
-          const CustomRichText(text: "I didn't receive the code!", text2: 'resend')
+          const CustomRichText(
+              text: "I didn't receive the code!", text2: 'resend')
         ]),
       ),
     );

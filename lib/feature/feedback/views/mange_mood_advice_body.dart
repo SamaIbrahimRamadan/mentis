@@ -23,7 +23,8 @@ class MangeMoodAdviceBody extends StatelessWidget {
             children: [
               10.sbH,
               CustomLogoText(
-                  x: 10,
+                  z: 30,
+                  x: 40,
                   text: 'Mange Mood',
                   onPressed: () {
                     NamedNavigatorImpl.pushNamed(Routes.kTakeAdvice);
@@ -39,14 +40,14 @@ class MangeMoodAdviceBody extends StatelessWidget {
                     ),
                     const Positioned(
                       left: 90,
-                      top: 60,
+                      top: 55,
                       child: CustomContainer(
                         text: 'Mange Moods',
                       ),
                     ),
                     Positioned(
-                        top: 110,
-                        left: 60,
+                        top: 105,
+                        left: 50,
                         child: Text(
                           'One kid’s feelings may spiral out of \n control when they’re upset Others\n may have trouble finding the \n motivation to do something \n that  does n’t interest them.',
                           style: Styles.title16.copyWith(color: Colors.white),
