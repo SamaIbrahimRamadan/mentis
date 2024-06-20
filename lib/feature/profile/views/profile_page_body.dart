@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mentis/core/theme/styles.dart';
 import 'package:mentis/core/widget/custom_list_tile.dart';
 import 'package:mentis/feature/profile/widget/custom_profile_widget.dart';
-import 'package:mentis/res.dart';
 
 import '../../../core/api/di.dart';
 import '../../../core/helper/spacing.dart';
@@ -22,37 +21,50 @@ class ProfilePageBody extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(centerTitle: true, title: const Text('My Profile', style: Styles.title20)),
       body: BlocProvider(
-        create: (context) => di<ProfileCubit>(),
-        child: Column(
-          children: [
-            50.sbH,
-            Row(
-              children: [
-                50.sbW,
-                CircleAvatar(
-                  maxRadius: 30,
-                  child: Image.asset(
-                    Res.profile,
-                  ),
-                ),
-                const CustomTextTile(text: 'Sama', text2: 'Sama@gmail.com'),
-              ],
-            ),
-            30.sbH,
-            CustomProfileWidget(
-              text: 'Profile Settings',
-              icon: Icons.settings_outlined,
-              icons2: Icons.arrow_forward_ios,
-              onTap: () {
-                NamedNavigatorImpl.pushNamed(Routes.kEditProfile);
-              },
-            ),
-            const CustomProfileWidget(
-              text: 'Notifications',
-              icon: Icons.notifications,
-            ),
-            const LogOutBtn(),
-          ],
+        create: (context) => di<ProfileCubit>()..getProfile(),
+        child: BlocConsumer<ProfileCubit, ProfileState>(
+          listener: (context, state) {
+            if (state is SuccessProfileState) {
+              UserPreferencesHelper().getProfilePreference();
+            }
+          },
+          builder: (context, state) {
+            final model = ProfileCubit.of(context).profileData;
+            return state is LoadingProfileState
+                ? const AppLoader()
+                : Column(
+                    children: [
+                      50.sbH,
+                      Row(
+                        children: [
+                          50.sbW,
+                          CircleAvatar(
+                            maxRadius: 30,
+                            child: Image.network(model?.image ?? ''),
+                          ),
+                          CustomTextTile(
+                            text: model?.name ?? 'Same',
+                            text2: model?.email ?? 'Sama@gmail.com',
+                          ),
+                        ],
+                      ),
+                      30.sbH,
+                      CustomProfileWidget(
+                        text: 'Profile Settings',
+                        icon: Icons.settings_outlined,
+                        icons2: Icons.arrow_forward_ios,
+                        onTap: () {
+                          NamedNavigatorImpl.pushNamed(Routes.kEditProfile);
+                        },
+                      ),
+                      const CustomProfileWidget(
+                        text: 'Notifications',
+                        icon: Icons.notifications,
+                      ),
+                      const LogOutBtn(),
+                    ],
+                  );
+          },
         ),
       ),
     );

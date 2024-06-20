@@ -27,15 +27,16 @@ class DioImpl extends DioHelper {
     _dio = Dio()
       ..interceptors.addAll(
         [
-          AppInterceptors(onRequest, onResponse, onError),
           PrettyDioLogger(
-              requestHeader: true,
-              requestBody: true,
-              responseBody: true,
-              responseHeader: false,
-              error: true,
-              compact: true,
-              maxWidth: 90),
+            requestHeader: true,
+            requestBody: true,
+            responseBody: true,
+            responseHeader: false,
+            error: true,
+            compact: true,
+            maxWidth: 90,
+          ),
+          AppInterceptors(onRequest, onResponse, onError),
         ],
       )
       ..options.baseUrl = baseURL

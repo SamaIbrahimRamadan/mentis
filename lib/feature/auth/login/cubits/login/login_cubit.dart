@@ -1,10 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/api/di.dart';
-import '../../../core/api/repository.dart';
-import '../../../core/local/cache_helper.dart';
-import '../../../core/local/enum_init.dart';
-import '../../../core/local/user_preferences/user_preferences_helper.dart';
+import '../../../../../core/api/di.dart';
+import '../../../../../core/api/repository.dart';
+import '../../../../../core/local/cache_helper.dart';
+import '../../../../../core/local/enum_init.dart';
+import '../../../../../core/local/user_preferences/user_preferences_helper.dart';
 
 part 'login_state.dart';
 
@@ -18,7 +18,7 @@ class LoginCubit extends Cubit<LoginState> {
     emit(LoginLoading());
     final res = await repo.login(email: email, password: password);
     res.fold(
-      (l) => emit(LoginFailure(l.toString())),
+      (l) => emit(LoginFailure(l)),
       (r) {
         di<CacheHelper>().put(CachingKey.isLogged, true);
         UserPreferencesHelper().saveUserPreference(userData: r);

@@ -4,14 +4,16 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:mentis/core/api/repository.dart';
-import 'package:mentis/core/logger.dart';
 import 'package:mentis/core/models/general_response.dart';
+import 'package:mentis/core/models/letter_model.dart';
 
 import '../../feature/auth/sign_up/sign_up_cubit.dart';
 import '../dio/dio_helper.dart';
 import '../models/edit_profile_model.dart';
 import '../models/get_doctor_model.dart';
 import '../models/login_response.dart';
+import '../models/profile_model.dart';
+import '../models/recover_password.dart';
 import '../models/reset_pass_model.dart';
 import '../models/show_doctor_model.dart';
 
@@ -24,12 +26,11 @@ class RepoImpl extends Repository {
       {required String email, required String password}) async {
     return responseHandling<LoginResponse>(
       onSuccess: () async {
-        final response = await dioHelper.post(
+        final r = await dioHelper.post(
           'login',
           data: {'email': email, 'password': password},
         );
-
-        return LoginResponse.fromJson(jsonDecode(response.data));
+        return LoginResponse.fromJson(jsonDecode(r.data));
       },
     );
   }
@@ -39,8 +40,6 @@ class RepoImpl extends Repository {
     return responseHandling<GeneralResponse>(
       onSuccess: () async {
         final f = await dioHelper.post('logout');
-        PrintLog.e(f);
-        PrintLog.e(f.data);
         return GeneralResponse.fromJson(jsonDecode(f.data));
       },
     );
@@ -80,14 +79,14 @@ class RepoImpl extends Repository {
   }
 
   @override
-  Future<Either<dynamic, GeneralResponse>> recoverPassword({required String email}) {
-    return responseHandling<GeneralResponse>(
+  Future<Either<dynamic, RecoverPasswordResponse>> recoverPassword({required String email}) {
+    return responseHandling<RecoverPasswordResponse>(
       onSuccess: () async {
         final f = await dioHelper.post(
           'recover/password',
           data: {'email': email},
         );
-        return GeneralResponse.fromJson(jsonDecode(f.data));
+        return RecoverPasswordResponse.fromJson(jsonDecode(f.data));
       },
     );
   }
@@ -152,11 +151,22 @@ class RepoImpl extends Repository {
   }
 
   @override
-  Future<Either<dynamic, LoginResponse>> profile() {
-    return responseHandling<LoginResponse>(
+  Future<Either<dynamic, ProfileModel>> profile() {
+    return responseHandling<ProfileModel>(
       onSuccess: () async {
-        final f = await dioHelper.get('users/edit/profile');
-        return LoginResponse.fromJson(jsonDecode(f.data));
+        final f = await dioHelper.get('patients/edit');
+
+        return ProfileModel.fromJson(jsonDecode(f.data));
+      },
+    );
+  }
+
+  @override
+  Future<Either<dynamic, LetterModelResponse>> letters() {
+    return responseHandling<LetterModelResponse>(
+      onSuccess: () async {
+        final r = await dioHelper.get('letters');
+        return LetterModelResponse.fromJson(jsonDecode(r.data));
       },
     );
   }

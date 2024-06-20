@@ -1,5 +1,5 @@
 class LoginResponse {
-  final bool status;
+  final bool? status;
   final String message;
   final String data;
 
@@ -16,7 +16,7 @@ class LoginResponse {
       );
 
   Map<String, dynamic> toJson() => {
-        'status': status,
+        'status': status ?? true,
         'message': message,
         'data': data,
       };

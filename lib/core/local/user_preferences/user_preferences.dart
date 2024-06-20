@@ -1,4 +1,5 @@
 import '../../models/login_response.dart';
+import '../../models/profile_model.dart';
 
 abstract class IUserPreferences {
   void saveUserPreference({required LoginResponse userData});
@@ -14,4 +15,8 @@ abstract class IUserPreferences {
   bool getSeenOnBoarding();
 
   void logout();
+
+  void saveProfilePreference({required ProfileModelData userData});
+
+  ProfileModelData? getProfilePreference();
 }

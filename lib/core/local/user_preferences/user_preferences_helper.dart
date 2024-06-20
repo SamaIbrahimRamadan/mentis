@@ -1,5 +1,6 @@
 import '../../api/di.dart';
 import '../../models/login_response.dart';
+import '../../models/profile_model.dart';
 import '../../navigator/named_navigator_impl.dart';
 import '../../navigator/named_navigator_routes.dart';
 import '../cache_helper.dart';
@@ -50,5 +51,19 @@ class UserPreferencesHelper implements IUserPreferences {
     di<CacheHelper>().logOut();
     di<CacheHelper>().clear(CachingKey.userData);
     NamedNavigatorImpl.pushNamed(Routes.kLogin, clean: true);
+  }
+
+  @override
+  void saveProfilePreference({required ProfileModelData? userData}) {
+    di<CacheHelper>().put(CachingKey.profile, userData);
+  }
+
+  @override
+  ProfileModelData? getProfilePreference() {
+    if (di<CacheHelper>().get(CachingKey.profile) != null) {
+      return ProfileModelData.fromJson(di<CacheHelper>().get(CachingKey.profile));
+    } else {
+      return null;
+    }
   }
 }

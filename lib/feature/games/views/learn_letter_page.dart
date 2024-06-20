@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mentis/core/theme/color.dart';
+import 'package:mentis/core/widget/app_loader.dart';
 
 import '../../../core/helper/spacing.dart';
 import '../../../core/navigator/named_navigator_impl.dart';
 import '../../../core/navigator/named_navigator_routes.dart';
 import '../../../core/theme/styles.dart';
 import '../../../res.dart';
-import '../model/letter_model.dart';
+import '../cubit/game_cubit.dart';
 import '../widgets/letter_widget.dart';
 
 class LearnLetterPage extends StatefulWidget {
@@ -22,79 +24,96 @@ class _LearnLetterPageState extends State<LearnLetterPage> {
     bool isLast = false;
     var control = PageController();
     return Scaffold(
-      body: Column(
-        children: [
-          40.sbH,
-          Row(
-            children: [
-              10.sbW,
-              IconButton(
-                  onPressed: () {
-                    NamedNavigatorImpl.pop();
-                  },
-                  icon: const Icon(
-                    Icons.arrow_back_ios,
-                    color: ColorManger.mainColor,
-                  )),
-              100.sbW,
-              Text(
-                'Letter',
-                style: Styles.title20.copyWith(),
-              ),
-              80.sbW,
-              Image.asset(
-                Res.img,
-                width: 60,
-                height: 70,
-              ),
-            ],
-          ),
-          Expanded(
-            child: PageView.builder(
-              onPageChanged: (int index) {
-                if (index == modelListLetter.length - 1) {
-                  setState(() {
-                    isLast = true;
-                  });
-                } else {
-                  setState(() {
-                    isLast = false;
-                  });
-                }
-              },
-              controller: control,
-              itemCount: modelListLetter.length,
-              //boarding.length,
-              itemBuilder: (context, index) => LetterWidget(
-                model: modelListLetter[index],
-                // onBoardingItem(boarding[index])),
-              ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(bottom: 73, left: 250),
-            child: FloatingActionButton(
-              backgroundColor: ColorManger.mainColor,
-              onPressed: () {
-                if (isLast) {
-                  NamedNavigatorImpl.pushNamed(Routes.kMainPage);
-                } else {
-                  control.nextPage(
-                      duration: const Duration(milliseconds: 750),
-                      curve: Curves.fastLinearToSlowEaseIn);
-                }
-              },
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(50),
-                side: const BorderSide(color: ColorManger.mainColor),
-              ),
-              child: const Icon(
-                Icons.arrow_forward,
-                color: Colors.white,
-              ),
-            ),
-          )
-        ],
+      body: BlocProvider<GameCubit>(
+        create: (context) => GameCubit.of(context)..getGameLetters(),
+        child: BlocConsumer<GameCubit, GameState>(
+          listener: (context, state) {},
+          builder: (context, state) {
+            final cubit = GameCubit.of(context);
+            final model = cubit.model!.data!;
+            if (state is GameLoadingState) {
+              return const AppLoader();
+            } else {
+              if (model.isEmpty) {
+                return const Center(child: Text('No Data Added'));
+              } else {
+                return Column(
+                  children: [
+                    40.sbH,
+                    Row(
+                      children: [
+                        10.sbW,
+                        IconButton(
+                          onPressed: () => NamedNavigatorImpl.pop(),
+                          icon: const Icon(
+                            Icons.arrow_back_ios,
+                            color: ColorManger.mainColor,
+                          ),
+                        ),
+                        100.sbW,
+                        Text(
+                          'Letter',
+                          style: Styles.title20.copyWith(),
+                        ),
+                        80.sbW,
+                        Image.asset(
+                          Res.img,
+                          width: 60,
+                          height: 70,
+                        ),
+                      ],
+                    ),
+                    Expanded(
+                      child: PageView.builder(
+                        onPageChanged: (int index) {
+                          if (index == model.length - 1) {
+                            setState(() {
+                              isLast = true;
+                            });
+                          } else {
+                            setState(() {
+                              isLast = false;
+                            });
+                          }
+                        },
+                        controller: control,
+                        itemCount: model.length,
+                        //boarding.length,
+                        itemBuilder: (context, index) => LetterWidget(
+                          model: model[index],
+                          // onBoardingItem(boarding[index])),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 73, left: 250),
+                      child: FloatingActionButton(
+                        backgroundColor: ColorManger.mainColor,
+                        onPressed: () {
+                          if (isLast) {
+                            NamedNavigatorImpl.pushNamed(Routes.kMainPage);
+                          } else {
+                            control.nextPage(
+                                duration: const Duration(milliseconds: 750),
+                                curve: Curves.fastLinearToSlowEaseIn);
+                          }
+                        },
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50),
+                          side: const BorderSide(color: ColorManger.mainColor),
+                        ),
+                        child: const Icon(
+                          Icons.arrow_forward,
+                          color: Colors.white,
+                        ),
+                      ),
+                    )
+                  ],
+                );
+              }
+            }
+          },
+        ),
       ),
     );
   }

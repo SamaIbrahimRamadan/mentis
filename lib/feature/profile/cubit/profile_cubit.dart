@@ -1,6 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mentis/core/models/profile_model.dart';
 
+import '../../../core/api/di.dart';
 import '../../../core/api/repository.dart';
+import '../../../core/local/cache_helper.dart';
+import '../../../core/local/enum_init.dart';
+import '../../../core/local/user_preferences/user_preferences_helper.dart';
 import '../../../core/navigator/named_navigator_impl.dart';
 
 part 'profile_state.dart';
@@ -11,20 +16,23 @@ class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit(this.repository) : super(InitialProfileState());
 
   static ProfileCubit of(context) => BlocProvider.of(context);
-  // ProfileData? profileData;
-  String userExtiontion = '';
 
-  void getProfile() async {
+  void saveUserDate(ProfileModelData userModel) {
+    UserPreferencesHelper().saveProfilePreference(userData: userModel);
+  }
+
+  ProfileModelData? profileData;
+
+  Future<void> getProfile() async {
     emit(LoadingProfileState());
     final f = await repository.profile();
     f.fold(
-      (l) {
-        emit(ErrorProfileState());
-      },
+      (l) => emit(ErrorProfileState()),
       (r) {
-        // profileData = r.data;
-        // userExtiontion = getInitials(profileData!.name!);
-        emit(SuccessProfileState());
+        profileData = r.data;
+        di<CacheHelper>().put(CachingKey.profile, true);
+        saveUserDate(profileData!);
+        emit(SuccessProfileState(r.data));
       },
     );
   }
@@ -36,7 +44,6 @@ class ProfileCubit extends Cubit<ProfileState> {
       (l) => emit(ErrorUpdateProfileState()),
       (r) {
         // profileData = r.data;
-        // userExtiontion = getInitials(profileData!.name!);
         NamedNavigatorImpl.pop();
         //PopUpHelper.showSnakeBar(message: r.message.toString(), isError: false);
         emit(SuccessUpdateProfileState());

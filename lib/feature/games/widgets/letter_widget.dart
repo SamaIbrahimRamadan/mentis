@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/helper/spacing.dart';
-import '../model/letter_model.dart';
+import '../../../core/models/letter_model.dart';
 
 class LetterWidget extends StatelessWidget {
-  final ModelLetter model;
+  final LetterModelData model;
   const LetterWidget({super.key, required this.model});
 
   @override
@@ -14,11 +14,11 @@ class LetterWidget extends StatelessWidget {
       children: [
         60.sbH,
         Image.asset(
-          model.image,
+          model.image ?? '',
           width: 350,
           height: 400,
         ),
-        35.sbH,
+        // 35.sbH,
         /* Text(
           model.text,
           textAlign: TextAlign.center,

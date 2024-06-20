@@ -7,7 +7,7 @@ import 'core/api/cubit/state.dart';
 import 'core/api/di.dart';
 import 'core/navigator/named_navigator_impl.dart';
 import 'core/navigator/named_navigator_routes.dart';
-import 'feature/auth/login/login_cubit.dart';
+import 'feature/auth/login/cubits/login/login_cubit.dart';
 import 'feature/home/view-model/home_cubit.dart';
 import 'feature/splash/splash_cubit.dart';
 
@@ -18,16 +18,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<NetworkCubit>(
-            create: (BuildContext context) => di<NetworkCubit>()),
-        BlocProvider<LoginCubit>(
-            create: (BuildContext context) => di<LoginCubit>()),
-        BlocProvider(
-            create: (BuildContext context) =>
-                di<SplashCubit>()..switchAnimation()),
-        BlocProvider(
-            create: (BuildContext context) =>
-                di<HomeCubit>() /*..getHomeData()*/),
+        BlocProvider<NetworkCubit>(create: (BuildContext context) => di<NetworkCubit>()),
+        BlocProvider<LoginCubit>(create: (BuildContext context) => di<LoginCubit>()),
+        BlocProvider(create: (BuildContext context) => di<SplashCubit>()..switchAnimation()),
+        BlocProvider(create: (BuildContext context) => di<HomeCubit>() /*..getHomeData()*/),
         // BlocProvider(create: (BuildContext context) => di<BottomBarCubit>()..getLocalData()),
       ],
       child: BlocListener<NetworkCubit, NetworkStates>(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mentis/feature/auth/login/login_cubit.dart';
+import 'package:mentis/feature/auth/login/cubits/login/login_cubit.dart';
 import 'package:mentis/feature/auth/login/widgets/custom_login_text.dart';
 import 'package:mentis/feature/auth/login/widgets/custom_login_text_field.dart';
 import 'package:mentis/res.dart';
@@ -36,8 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   .showSnackBar(const SnackBar(content: Text('Login success')));
             }
             if (state is LoginFailure) {
-              ScaffoldMessenger.of(context)
-                  .showSnackBar(SnackBar(content: Text(state.message)));
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.message)));
             }
           },
           builder: (context, state) {
@@ -50,9 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Image.asset(Res.login),
-                      CustomLoginTextField(
-                          controller: controller,
-                          controllerPass: controllerPass),
+                      CustomLoginTextField(controller: controller, controllerPass: controllerPass),
                       ConditionalBtn(
                         condition: state is LoginLoading,
                         text: 'Login',

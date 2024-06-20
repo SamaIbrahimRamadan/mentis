@@ -8,7 +8,11 @@ class LoadingProfileState extends ProfileState {}
 
 class ErrorProfileState extends ProfileState {}
 
-class SuccessProfileState extends ProfileState {}
+class SuccessProfileState extends ProfileState {
+  final ProfileModelData model;
+
+  SuccessProfileState(this.model);
+}
 
 class LoadingLogoutState extends ProfileState {}
 
