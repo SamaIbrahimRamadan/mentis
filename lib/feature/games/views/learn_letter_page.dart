@@ -3,13 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mentis/core/theme/color.dart';
 import 'package:mentis/core/widget/app_loader.dart';
 
+import '../../../core/api/di.dart';
 import '../../../core/helper/spacing.dart';
 import '../../../core/navigator/named_navigator_impl.dart';
 import '../../../core/navigator/named_navigator_routes.dart';
 import '../../../core/theme/styles.dart';
 import '../../../res.dart';
 import '../cubit/game_cubit.dart';
-import '../widgets/letter_widget.dart';
 
 class LearnLetterPage extends StatefulWidget {
   const LearnLetterPage({super.key});
@@ -25,16 +25,16 @@ class _LearnLetterPageState extends State<LearnLetterPage> {
     var control = PageController();
     return Scaffold(
       body: BlocProvider<GameCubit>(
-        create: (context) => GameCubit.of(context)..getGameLetters(),
+        create: (context) => di<GameCubit>()..getGameLetters(),
         child: BlocConsumer<GameCubit, GameState>(
           listener: (context, state) {},
           builder: (context, state) {
             final cubit = GameCubit.of(context);
-            final model = cubit.model!.data!;
+            final model = cubit.model?.data;
             if (state is GameLoadingState) {
               return const AppLoader();
             } else {
-              if (model.isEmpty) {
+              if (model?.isEmpty ?? true) {
                 return const Center(child: Text('No Data Added'));
               } else {
                 return Column(
@@ -66,7 +66,7 @@ class _LearnLetterPageState extends State<LearnLetterPage> {
                     Expanded(
                       child: PageView.builder(
                         onPageChanged: (int index) {
-                          if (index == model.length - 1) {
+                          if (index == model!.length - 1) {
                             setState(() {
                               isLast = true;
                             });
@@ -77,12 +77,19 @@ class _LearnLetterPageState extends State<LearnLetterPage> {
                           }
                         },
                         controller: control,
-                        itemCount: model.length,
+                        itemCount: model?.length ?? 0,
                         //boarding.length,
-                        itemBuilder: (context, index) => LetterWidget(
-                          model: model[index],
-                          // onBoardingItem(boarding[index])),
-                        ),
+                        itemBuilder: (c, i) {
+                          return Container(
+                            margin: const EdgeInsets.all(20),
+                            child: Image.network(
+                              model![i].image ?? '',
+                              width: 350,
+                              height: 400,
+                            ),
+                          );
+                          // return LetterWidget(model: model![i]);
+                        },
                       ),
                     ),
                     Container(

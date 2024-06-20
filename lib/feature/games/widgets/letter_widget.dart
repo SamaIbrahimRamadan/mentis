@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/helper/spacing.dart';
 import '../../../core/models/letter_model.dart';
 
 class LetterWidget extends StatelessWidget {
@@ -12,8 +11,8 @@ class LetterWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        60.sbH,
-        Image.asset(
+        // 60.sbH,
+        Image.network(
           model.image ?? '',
           width: 350,
           height: 400,
