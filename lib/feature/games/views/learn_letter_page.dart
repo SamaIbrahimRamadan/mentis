@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_tts/flutter_tts.dart';
+import 'package:mentis/core/helper/spacing.dart';
+import 'package:mentis/core/logger.dart';
 import 'package:mentis/core/theme/color.dart';
 import 'package:mentis/core/widget/app_loader.dart';
 
 import '../../../core/api/di.dart';
-import '../../../core/helper/spacing.dart';
 import '../../../core/navigator/named_navigator_impl.dart';
 import '../../../core/navigator/named_navigator_routes.dart';
 import '../../../core/theme/styles.dart';
@@ -19,11 +21,44 @@ class LearnLetterPage extends StatefulWidget {
 }
 
 class _LearnLetterPageState extends State<LearnLetterPage> {
+  FlutterTts flutterTts = FlutterTts();
+  @override
+  void initState() {
+    flutterTts.setLanguage('ar-SA');
+    super.initState();
+  }
+
+  Future<void> _speak(String letter) async {
+    await flutterTts.speak(letter);
+  }
+
   @override
   Widget build(BuildContext context) {
     bool isLast = false;
     var control = PageController();
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: Row(
+          children: [
+            10.sbW,
+            IconButton(
+              onPressed: () => NamedNavigatorImpl.pop(),
+              icon: const Icon(
+                Icons.arrow_back_ios,
+                color: ColorManger.mainColor,
+              ),
+            ),
+            100.sbW,
+            Text(
+              'Letter',
+              style: Styles.title20.copyWith(color: ColorManger.mainColor),
+            ),
+            80.sbW,
+            Image.asset(Res.img, width: 60, height: 70),
+          ],
+        ),
+      ),
       body: BlocProvider<GameCubit>(
         create: (context) => di<GameCubit>()..getGameLetters(),
         child: BlocConsumer<GameCubit, GameState>(
@@ -39,30 +74,6 @@ class _LearnLetterPageState extends State<LearnLetterPage> {
               } else {
                 return Column(
                   children: [
-                    40.sbH,
-                    Row(
-                      children: [
-                        10.sbW,
-                        IconButton(
-                          onPressed: () => NamedNavigatorImpl.pop(),
-                          icon: const Icon(
-                            Icons.arrow_back_ios,
-                            color: ColorManger.mainColor,
-                          ),
-                        ),
-                        100.sbW,
-                        Text(
-                          'Letter',
-                          style: Styles.title20.copyWith(),
-                        ),
-                        80.sbW,
-                        Image.asset(
-                          Res.img,
-                          width: 60,
-                          height: 70,
-                        ),
-                      ],
-                    ),
                     Expanded(
                       child: PageView.builder(
                         onPageChanged: (int index) {
@@ -80,12 +91,18 @@ class _LearnLetterPageState extends State<LearnLetterPage> {
                         itemCount: model?.length ?? 0,
                         //boarding.length,
                         itemBuilder: (c, i) {
-                          return Container(
-                            margin: const EdgeInsets.all(20),
-                            child: Image.network(
-                              model![i].image ?? '',
-                              width: 350,
-                              height: 400,
+                          return InkWell(
+                            onTap: () {
+                              PrintLog.e(model[i].text);
+                              _speak(model[i].text ?? '');
+                            },
+                            child: Container(
+                              margin: const EdgeInsets.all(20),
+                              child: Image.network(
+                                model![i].image ?? '',
+                                width: 350,
+                                height: 400,
+                              ),
                             ),
                           );
                           // return LetterWidget(model: model![i]);

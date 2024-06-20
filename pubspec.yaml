@@ -32,6 +32,7 @@ dependencies:
   logger:
   animate_do: ^3.3.4
   mqtt_client: ^10.2.1
+  flutter_tts: ^4.0.2
 
 
 dev_dependencies:
