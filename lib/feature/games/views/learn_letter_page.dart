@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:mentis/core/helper/spacing.dart';
-import 'package:mentis/core/logger.dart';
 import 'package:mentis/core/theme/color.dart';
 import 'package:mentis/core/widget/app_loader.dart';
 
@@ -61,11 +60,9 @@ class _LearnLetterPageState extends State<LearnLetterPage> {
       ),
       body: BlocProvider<GameCubit>(
         create: (context) => di<GameCubit>()..getGameLetters(),
-        child: BlocConsumer<GameCubit, GameState>(
-          listener: (context, state) {},
+        child: BlocBuilder<GameCubit, GameState>(
           builder: (context, state) {
-            final cubit = GameCubit.of(context);
-            final model = cubit.model?.data;
+            final model = GameCubit.of(context).model?.data;
             if (state is GameLoadingState) {
               return const AppLoader();
             } else {
@@ -78,34 +75,21 @@ class _LearnLetterPageState extends State<LearnLetterPage> {
                       child: PageView.builder(
                         onPageChanged: (int index) {
                           if (index == model!.length - 1) {
-                            setState(() {
-                              isLast = true;
-                            });
+                            setState(() => isLast = true);
                           } else {
-                            setState(() {
-                              isLast = false;
-                            });
+                            setState(() => isLast = false);
                           }
                         },
                         controller: control,
                         itemCount: model?.length ?? 0,
-                        //boarding.length,
                         itemBuilder: (c, i) {
                           return InkWell(
-                            onTap: () {
-                              PrintLog.e(model[i].text);
-                              _speak(model[i].text ?? '');
-                            },
+                            onTap: () => _speak(model[i].text ?? ''),
                             child: Container(
                               margin: const EdgeInsets.all(20),
-                              child: Image.network(
-                                model![i].image ?? '',
-                                width: 350,
-                                height: 400,
-                              ),
+                              child: Image.network(model![i].image ?? ''),
                             ),
                           );
-                          // return LetterWidget(model: model![i]);
                         },
                       ),
                     ),
@@ -126,10 +110,7 @@ class _LearnLetterPageState extends State<LearnLetterPage> {
                           borderRadius: BorderRadius.circular(50),
                           side: const BorderSide(color: ColorManger.mainColor),
                         ),
-                        child: const Icon(
-                          Icons.arrow_forward,
-                          color: Colors.white,
-                        ),
+                        child: const Icon(Icons.arrow_forward, color: Colors.white),
                       ),
                     )
                   ],
