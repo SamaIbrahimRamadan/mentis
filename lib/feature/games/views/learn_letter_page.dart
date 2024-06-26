@@ -45,13 +45,13 @@ class _LearnLetterPageState extends State<LearnLetterPage> {
               onPressed: () => NamedNavigatorImpl.pop(),
               icon: const Icon(
                 Icons.arrow_back_ios,
-                color: ColorManger.mainColor,
+                color: Colors.black,
               ),
             ),
             100.sbW,
             Text(
               'Letter',
-              style: Styles.title20.copyWith(color: ColorManger.mainColor),
+              style: Styles.title20.copyWith(color: Colors.black),
             ),
             80.sbW,
             Image.asset(Res.img, width: 60, height: 70),
@@ -108,9 +108,10 @@ class _LearnLetterPageState extends State<LearnLetterPage> {
                         },
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50),
-                          side: const BorderSide(color: ColorManger.mainColor),
+                          side: const BorderSide(color: Colors.black),
                         ),
-                        child: const Icon(Icons.arrow_forward, color: Colors.white),
+                        child: const Icon(Icons.arrow_forward,
+                            color: Colors.white),
                       ),
                     )
                   ],

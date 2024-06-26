@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mentis/core/helper/spacing.dart';
 
 import '../../../core/theme/styles.dart';
-import '../../../res.dart';
+import '../../res.dart';
 
 class AppBg extends StatelessWidget {
   final String? title;
@@ -14,7 +14,7 @@ class AppBg extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage(Res.color),
           fit: BoxFit.fill,

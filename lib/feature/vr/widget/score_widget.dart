@@ -12,7 +12,7 @@ class ScoreWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Image.asset(Res.colorVr, width: 350),
+        Image.asset(Res.color, width: 350),
         Positioned(
             left: 10,
             top: 10,

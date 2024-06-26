@@ -48,7 +48,7 @@ class LearnSocialBehaviorPage extends StatelessWidget {
           ),
           80.sbH,
           Image.asset(
-            Res.socialImage,
+            Res.social_image,
             width: 350,
           ),
           40.sbH,

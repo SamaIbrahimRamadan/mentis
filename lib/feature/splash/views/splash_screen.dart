@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mentis/core/helper/spacing.dart';
 import 'package:mentis/feature/splash/splash_cubit.dart';
-
 import '../../../core/api/di.dart';
 import '../../../core/navigator/named_navigator_impl.dart';
 import '../../../core/navigator/named_navigator_routes.dart';

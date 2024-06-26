@@ -16,25 +16,27 @@ import 'package:mentis/feature/feedback/views/feedback_page_body.dart';
 import 'package:mentis/feature/feedback/views/manage_mode_advice.dart';
 import 'package:mentis/feature/feedback/views/send_feedback.dart';
 import 'package:mentis/feature/games/views/coloring.dart';
-import 'package:mentis/feature/games/views/random_game/random_game.dart';
 import 'package:mentis/feature/games/views/games.dart';
 import 'package:mentis/feature/games/views/learn_letter_page.dart';
 import 'package:mentis/feature/games/views/learn_social_behavior.dart';
+import 'package:mentis/feature/games/views/random_game/random_game.dart';
 import 'package:mentis/feature/home/views/button_nav_page.dart';
-import 'package:mentis/feature/notes/views/note_page.dart';
 import 'package:mentis/feature/onBoarding/views/boarding_screen.dart';
 import 'package:mentis/feature/profile/views/edit_profile.dart';
 import 'package:mentis/feature/profile/views/profile_screen.dart';
 import 'package:mentis/feature/splash/views/splash_screen.dart';
+import 'package:mentis/feature/tasks/views/advice_stress.dart';
 import 'package:mentis/feature/vr/views/vr_score_page.dart';
 
 import '../../feature/auth/main_page/views/main_page_screen.dart';
 import '../../feature/doctor/views/doctor_notification/views/call_doctor.dart';
 import '../../feature/games/views/learn_color_page.dart';
+import '../../feature/tasks/views/note_page.dart';
 import 'named_navigator_routes.dart';
 
 class NamedNavigatorImpl {
-  static final GlobalKey<NavigatorState> navigatorState = GlobalKey<NavigatorState>();
+  static final GlobalKey<NavigatorState> navigatorState =
+      GlobalKey<NavigatorState>();
 
   static void pop({dynamic result}) {
     if (Navigator.of(navigatorState.currentState!.context).canPop()) {
@@ -42,26 +44,32 @@ class NamedNavigatorImpl {
     }
   }
 
-  static Future push(Widget screen, {bool replace = false, bool clean = false}) {
+  static Future push(Widget screen,
+      {bool replace = false, bool clean = false}) {
     if (clean) {
-      return navigatorState.currentState!
-          .pushAndRemoveUntil(MaterialPageRoute(builder: (_) => screen), (_) => false);
+      return navigatorState.currentState!.pushAndRemoveUntil(
+          MaterialPageRoute(builder: (_) => screen), (_) => false);
     } else if (replace) {
       return navigatorState.currentState!
           .pushReplacement(MaterialPageRoute(builder: (_) => screen));
     } else {
-      return navigatorState.currentState!.push(MaterialPageRoute(builder: (_) => screen));
+      return navigatorState.currentState!
+          .push(MaterialPageRoute(builder: (_) => screen));
     }
   }
 
-  static Future pushNamed(String routeName, {arguments, bool replace = false, bool clean = false}) {
+  static Future pushNamed(String routeName,
+      {arguments, bool replace = false, bool clean = false}) {
     if (clean) {
-      return navigatorState.currentState!
-          .pushNamedAndRemoveUntil(routeName, (_) => false, arguments: arguments);
+      return navigatorState.currentState!.pushNamedAndRemoveUntil(
+          routeName, (_) => false,
+          arguments: arguments);
     } else if (replace) {
-      return navigatorState.currentState!.pushReplacementNamed(routeName, arguments: arguments);
+      return navigatorState.currentState!
+          .pushReplacementNamed(routeName, arguments: arguments);
     } else {
-      return navigatorState.currentState!.pushNamed(routeName, arguments: arguments);
+      return navigatorState.currentState!
+          .pushNamed(routeName, arguments: arguments);
     }
   }
 
@@ -94,7 +102,8 @@ class NamedNavigatorImpl {
         return MaterialPageRoute(builder: (_) => const LearnColorPage());
 
       case Routes.kLearnSocialBehavior:
-        return MaterialPageRoute(builder: (_) => const LearnSocialBehaviorPage());
+        return MaterialPageRoute(
+            builder: (_) => const LearnSocialBehaviorPage());
 
       case Routes.kSendFeedback:
         return MaterialPageRoute(builder: (_) => const SendFeedBack());
@@ -106,7 +115,8 @@ class NamedNavigatorImpl {
         return MaterialPageRoute(builder: (_) => const DoctorChatPage());
 
       case Routes.kNotificationDoctor:
-        return MaterialPageRoute(builder: (_) => const DoctorNotificationPage());
+        return MaterialPageRoute(
+            builder: (_) => const DoctorNotificationPage());
 
       case Routes.kDoctorHome:
         return MaterialPageRoute(builder: (_) => const DoctorButtonNavPage());
@@ -119,6 +129,9 @@ class NamedNavigatorImpl {
 
       case Routes.kMoodAdvice:
         return MaterialPageRoute(builder: (_) => const MangeMoodAdvice());
+
+      case Routes.kStressAdvice:
+        return MaterialPageRoute(builder: (_) => const AdviceStress());
 
       case Routes.kNote:
         return MaterialPageRoute(builder: (_) => const NotePage());

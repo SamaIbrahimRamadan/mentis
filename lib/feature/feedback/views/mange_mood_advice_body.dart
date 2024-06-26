@@ -15,7 +15,6 @@ class MangeMoodAdviceBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var control = PageController();
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -56,9 +55,7 @@ class MangeMoodAdviceBody extends StatelessWidget {
                   ],
                 ),
               ),
-              MangeMoodSectionTwo(
-                control: control,
-              )
+              MangeMoodSectionTwo()
             ],
           ),
         ),

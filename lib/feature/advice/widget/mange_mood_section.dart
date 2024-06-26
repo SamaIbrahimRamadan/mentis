@@ -13,7 +13,7 @@ class MangeMoodSection extends StatelessWidget {
       children: [
         Positioned(
           left: 140,
-          top: 225,
+          top: 220,
           child: CustomIconButton(
             onTap: () {},
             x: 20,
@@ -24,7 +24,7 @@ class MangeMoodSection extends StatelessWidget {
         ),
         Positioned(
           left: 200,
-          top: 225,
+          top: 220,
           child: CustomIconButton(
             onTap: () {},
             x: 20,

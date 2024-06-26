@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:mentis/core/helper/spacing.dart';
 import 'package:mentis/core/logger.dart';
+import 'package:mentis/core/theme/color.dart';
 import 'package:mqtt_client/mqtt_client.dart';
 import 'package:mqtt_client/mqtt_server_client.dart';
+
+import '../../../core/theme/styles.dart';
+import '../../../res.dart';
 
 class NotePage extends StatefulWidget {
   const NotePage({super.key});
@@ -81,7 +86,8 @@ class _NotePageState extends State<NotePage> {
     for (var event in events) {
       final topic = event.topic;
       final MqttPublishMessage message = event.payload as MqttPublishMessage;
-      final payload = MqttPublishPayload.bytesToStringAsString(message.payload.message);
+      final payload =
+          MqttPublishPayload.bytesToStringAsString(message.payload.message);
 
       setState(() {
         switch (topic) {
@@ -122,10 +128,8 @@ class _NotePageState extends State<NotePage> {
           break;
       }
     });
-
     final message = MqttClientPayloadBuilder();
     message.addString(value ? '1' : '0');
-
     client.publishMessage(
       topic,
       MqttQos.atLeastOnce,
@@ -138,36 +142,58 @@ class _NotePageState extends State<NotePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('MQTT Switches and Sensors')),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: Row(
+          children: [
+            120.sbW,
+            Text(
+              'Do Tasks ',
+              style: Styles.title20.copyWith(color: ColorManger.mainColor),
+            ),
+            80.sbW,
+            Image.asset(Res.img, width: 60, height: 70),
+          ],
+        ),
+      ),
       body: ListView(
-        padding: const EdgeInsets.all(16.0),
+        //padding: const EdgeInsets.all(10.0),
         children: [
           SwitchListTile(
-            title: const Text('LED 1'),
+            // title: Image.asset(Res.study),
+            //const Text('LED 1'),
             value: led1Switch,
             onChanged: (value) => _handleSwitchChange(value, 'device/led1'),
           ),
           SwitchListTile(
-            title: const Text('LED 2'),
+            title: Image.asset(Res.study),
             value: led2Switch,
             onChanged: (value) => _handleSwitchChange(value, 'device/led2'),
           ),
           SwitchListTile(
-            title: const Text('LED 3'),
+            title: Image.asset(Res.study),
             value: led3Switch,
             onChanged: (value) => _handleSwitchChange(value, 'device/led3'),
           ),
           SwitchListTile(
-            title: const Text('LED 4'),
+            title: Image.asset(Res.study),
             value: led4Switch,
             onChanged: (value) => _handleSwitchChange(value, 'device/led4'),
           ),
           const Divider(),
-          ListTile(title: Text('Heart Rate ($heartRateValue)')),
-          ListTile(title: Text('Respiratory Rate ($respiratoryRateValue)')),
-          ListTile(title: Text('Oxygen Saturation ($oxygenSaturationValue)')),
-          ListTile(title: Text('Last Beat Time ($lastBeatTimeValue)')),
-          ListTile(title: Text('Data ($dataValue)')),
+          ListTile(
+            title: Text('Heart Rate ($heartRateValue)', style: Styles.title20),
+          ),
+          ListTile(
+              title: Text('Respiratory Rate ($respiratoryRateValue)',
+                  style: Styles.title20)),
+          ListTile(
+              title: Text('Oxygen Saturation ($oxygenSaturationValue)',
+                  style: Styles.title20)),
+          ListTile(
+              title: Text('Last Beat Time ($lastBeatTimeValue)',
+                  style: Styles.title20)),
+          ListTile(title: Text('Data ($dataValue)', style: Styles.title20)),
         ],
       ),
     );

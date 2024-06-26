@@ -22,10 +22,11 @@ class CustomContainer extends StatelessWidget {
         children: [
           Image.asset(
             Res.clock,
-            width: 30,
+            width: 25,
           ),
           10.sbW,
-          Text(text, style: Styles.title16.copyWith(fontWeight: FontWeight.normal))
+          Text(text,
+              style: Styles.title14.copyWith(fontWeight: FontWeight.normal))
         ],
       ),
     );

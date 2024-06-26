@@ -63,16 +63,22 @@ class MySamplePaymentState extends State<MySamplePayment> {
                       cardHolderName: cardHolderName,
                       cvvCode: cvvCode,
                       bankName: 'Axis Bank',
-                      frontCardBorder: useGlassMorphism ? null : Border.all(color: Colors.grey),
-                      backCardBorder: useGlassMorphism ? null : Border.all(color: Colors.grey),
+                      frontCardBorder: useGlassMorphism
+                          ? null
+                          : Border.all(color: Colors.grey),
+                      backCardBorder: useGlassMorphism
+                          ? null
+                          : Border.all(color: Colors.grey),
                       showBackView: isCvvFocused,
                       obscureCardNumber: true,
                       obscureCardCvv: true,
                       isHolderNameVisible: true,
                       cardBgColor: Colors.black,
-                      backgroundImage: useBackgroundImage ? Res.cardBg : null,
+                      backgroundImage:
+                          useBackgroundImage ? Res.mastercard : null,
                       isSwipeGestureEnabled: true,
-                      onCreditCardWidgetChange: (CreditCardBrand creditCardBrand) {},
+                      onCreditCardWidgetChange:
+                          (CreditCardBrand creditCardBrand) {},
                       customCardTypeIcons: <CustomCardTypeIcon>[
                         CustomCardTypeIcon(
                           cardType: CardType.mastercard,

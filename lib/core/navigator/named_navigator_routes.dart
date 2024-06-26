@@ -18,6 +18,7 @@ class Routes {
   static const kSendFeedback = '/kSendFeedback';
   static const kFeedback = '/kFeedback';
   static const kAdvice = '/kAdvice';
+  static const kStressAdvice = '/kStressAdvice';
   static const kTakeAdvice = '/kTakeAdvice';
   static const kNote = '/kNote';
   static const kPaymentDone = '/kPaymentDone';

@@ -37,11 +37,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
           listener: (context, state) {
             if (state is SignUpSuccess) {
               NamedNavigatorImpl.pushNamed(Routes.kHome);
-              ScaffoldMessenger.of(context)
-                  .showSnackBar(const SnackBar(content: Text('Sign up success')));
+              ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Sign up success')));
             }
             if (state is SignUpError) {
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.message)));
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text(state.message)));
             }
           },
           builder: (context, state) {
@@ -54,7 +55,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Image.asset(
-                      Res.signUp,
+                      Res.sign_up,
                       width: 500,
                       height: 300,
                     ),
